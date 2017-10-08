@@ -15,6 +15,7 @@ import { ValidateService} from './services/validate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthService } from './services/auth.service';
 import {HttpModule} from '@angular/http';
+import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -31,10 +32,12 @@ const appRoutes: Routes = [
   },
   {
     path: 'profile',
+    canActivate: [AuthGuard],
     component: ProfileComponent
   },
   {
     path: 'dashboard',
+    canActivate: [AuthGuard],
     component: DashboardComponent
   }
 ]
@@ -56,7 +59,7 @@ const appRoutes: Routes = [
     FlashMessagesModule,
     HttpModule
   ],
-  providers: [ValidateService, AuthService],
+  providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

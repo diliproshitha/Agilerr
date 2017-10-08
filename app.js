@@ -39,6 +39,7 @@ app.use('/users', users);
 
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('stylesheets', express.static(path.join(__dirname, 'styles')));
 
 app.get('/', function (req, res) {
     res.send('INDEX');

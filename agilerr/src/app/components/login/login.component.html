@@ -1,3 +1,14 @@
-<p>
-  login works!
-</p>
+<div class="well" style="width:400px; margin:0 auto;">
+  <h2 class="page-header">Login</h2>
+  <form (submit)="onLoginSubmit()" class="form-signin">
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" [(ngModel)]="username" class="form-control" name="username">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" [(ngModel)]="password" class="form-control" name="password">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Login">
+  </form>
+</div>
