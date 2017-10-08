@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 
 import { ValidateService} from './services/validate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { AuthService } from './services/auth.service';
+import {HttpModule} from '@angular/http';
 
 const appRoutes: Routes = [
   {
@@ -51,9 +53,10 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    FlashMessagesModule
+    FlashMessagesModule,
+    HttpModule
   ],
-  providers: [ValidateService],
+  providers: [ValidateService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
