@@ -21,6 +21,7 @@ mongoose.connection.on('error', function (err) {
 const app = express();
 
 const users = require('./routes/users');
+const dashboard = require('./routes/dashboard');
 
 //Cors middleware
 app.use(cors());
@@ -37,9 +38,13 @@ app.use(bodyParser.json());
 //users route
 app.use('/users', users);
 
+//dashboard route
+app.use('/dashboard', dashboard);
+
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('stylesheets', express.static(path.join(__dirname, 'styles')));
+app.use('images', express.static(path.join(__dirname, 'img')));
 
 app.get('/', function (req, res) {
     res.send('INDEX');

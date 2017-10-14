@@ -16,6 +16,10 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthService } from './services/auth.service';
 import {HttpModule} from '@angular/http';
 import { AuthGuard } from './guards/auth.guard';
+import { FooterComponent } from './components/footer/footer.component';
+import { CreatescrumComponent } from './components/createscrum/createscrum.component';
+import { CreateProjectComponent } from './components/create-project/create-project.component';
+import {DashService} from './services/dash.service';
 
 const appRoutes: Routes = [
   {
@@ -38,7 +42,23 @@ const appRoutes: Routes = [
   {
     path: 'dashboard',
     canActivate: [AuthGuard],
-    component: DashboardComponent
+    component: DashboardComponent,
+    children: [
+      {
+        path: 'createProject',
+        component: CreateProjectComponent
+      }
+    ]
+  },
+  {
+    path: 'createScrum',
+    canActivate: [AuthGuard],
+    component: CreatescrumComponent
+  },
+  {
+    path: 'createProject',
+    canActivate: [AuthGuard],
+    component: CreateProjectComponent
   }
 ]
 
@@ -50,7 +70,10 @@ const appRoutes: Routes = [
     RegisterComponent,
     ProfileComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    FooterComponent,
+    CreatescrumComponent,
+    CreateProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +82,7 @@ const appRoutes: Routes = [
     FlashMessagesModule,
     HttpModule
   ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard, DashService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

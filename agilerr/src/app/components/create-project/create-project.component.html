@@ -1,0 +1,16 @@
+<div class="well" style="width:400px; margin:0 auto;">
+
+  <h2 class="page-header">Create a New Project</h2>
+
+  <form (submit)="onCreateSubmit()" class="form-signin">
+    <div class="form-group">
+      <label>Project Name</label>
+      <input type="text" [(ngModel)]="projectname" class="form-control" name="projectname">
+    </div>
+    <div class="form-group">
+      <label>Add Scrum Members</label>
+      <textarea rows="4" cols="42" [(ngModel)]="members" name="members">Enter usernames of members here seperated by commas. (Ex: John, Doe, Martin)</textarea>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Create New Project">
+  </form>
+</div>

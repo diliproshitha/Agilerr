@@ -21,6 +21,6 @@
   "author": "Dilip Roshtiha, Gayan Sampath",
   "license": "ISC",
   "devDependencies": {
-    "@angular/cli": "^1.4.5"
+    "@angular/cli": "^1.4.7"
   }
 }

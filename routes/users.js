@@ -12,12 +12,13 @@ router.post('/register', function (req, res) {
         name: req.body.name,
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        type: req.body.type
     });
 
     User.addUser(newuser, function (err, user) {
         if (err){
-            res.json({success: false, msg: 'Failes to register user'});
+            res.json({success: false, msg: JSON.stringify(err)});
         } else {
             res.json({success: true, msg: 'User Registered'});
         }
@@ -50,7 +51,8 @@ router.post('/authenticate', function (req, res) {
                     id: user._id,
                     name: user.name,
                     username: user.username,
-                    email: user.email
+                    email: user.email,
+                    type: user.type
                 }
             });
           } else {
