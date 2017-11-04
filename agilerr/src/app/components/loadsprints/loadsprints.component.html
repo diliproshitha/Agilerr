@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th style="width: 5%">#</th>
+    <th>Name</th>
+    <th>Created</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody id="tbody">
+  <tr *ngFor="let sprint of sprints">
+    <th style="width: 5%" scope="row">01</th>
+    <td>{{ sprint.name }}</td>
+    <td>{{ sprint.date }}</td>
+    <td>
+      <div class="btn-group" role="group">
+      <button type="button" class="btn btn-secondary" (click)="viewClicked(sprint._id)">View</button>
+      <button *ngIf="isMaster" type="button" class="btn btn-secondary" (click)="editClicked(sprint._id)">Edit</button>
+    </div></td>
+    <hr>
+  </tr>
+  </tbody>
+</table>

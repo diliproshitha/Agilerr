@@ -1,0 +1,11 @@
+<div style="width:300px; margin:0 auto;">
+
+  <div style="height: 360px;">
+    <ul #chatArea>
+      <li *ngFor="let msg of msgs">{{ msg.username }} {{ msg.msg }}</li>
+    </ul>
+  </div>
+
+  <input type="text" [(ngModel)]="text">
+  <button (click)="sendmsg()">Send</button>
+</div>
