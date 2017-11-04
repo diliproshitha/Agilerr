@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const config = require('../config/database');
 
 const ProjectsSchema = mongoose.Schema({
     projectName: {
@@ -13,6 +12,18 @@ const ProjectsSchema = mongoose.Schema({
     members: {
         type: Array,
         required: true
+    },
+    ids: {
+        type: Array,
+        required: true
+    },
+    description: {
+        type: Array,
+        required: true
+    },
+    time: {
+        type: Array,
+        required: true
     }
 });
 
@@ -24,5 +35,10 @@ module.exports.addProject = function(newProject, callback) {
 
 module.exports.getOwnersProjectList = function(owner, callback) {
     const query = {owner: owner};
+    Project.find(query, callback);
+}
+
+module.exports.getAssignedProjectList = function(owner, callback) {
+    const query = {members: owner};
     Project.find(query, callback);
 }

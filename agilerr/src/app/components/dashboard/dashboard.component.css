@@ -1,0 +1,38 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(10,1fr);
+  grid-auto-rows: 25%;
+}
+
+#page {
+  margin-left: 200px;
+}
+
+#maincontent {
+  float: right;
+  width: 80%;
+  background-color: #F0F0F0;
+}
+
+#menuleftcontent{
+  float: left;
+  width: 25%;
+  margin-left: -20%;
+  background-color: #CCCCCC;
+}
+
+#menurightcontent{
+  float: right;
+  width: 25%;
+  /*margin-right: -20%;*/
+  background-color: #CCCCCC;
+}
+
+#clearingdiv {
+  clear: both;
+}
+
+#inner {
+  width: 50%;
+  margin: 0 auto;
+}

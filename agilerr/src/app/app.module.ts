@@ -20,6 +20,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CreatescrumComponent } from './components/createscrum/createscrum.component';
 import { CreateProjectComponent } from './components/create-project/create-project.component';
 import {DashService} from './services/dash.service';
+import { CreatesprintComponent } from './components/createsprint/createsprint.component';
+import { LoadsprintsComponent } from './components/loadsprints/loadsprints.component';
+import { ViewsprintComponent } from './components/viewsprint/viewsprint.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const appRoutes: Routes = [
   {
@@ -46,19 +50,34 @@ const appRoutes: Routes = [
     children: [
       {
         path: 'createProject',
-        component: CreateProjectComponent
+        component: CreateProjectComponent,
+        outlet: 'sub'
+      },
+      {
+        path: 'viewSprint',
+        component: ViewsprintComponent
       }
     ]
   },
   {
-    path: 'createScrum',
+    path: 'createSprint',
     canActivate: [AuthGuard],
-    component: CreatescrumComponent
+    component: CreatesprintComponent
   },
   {
     path: 'createProject',
     canActivate: [AuthGuard],
     component: CreateProjectComponent
+  },
+  {
+    path: 'viewSprint',
+    canActivate: [AuthGuard],
+    component: ViewsprintComponent
+  },
+  {
+    path: 'chat',
+    canActivate: [AuthGuard],
+    component: ChatComponent
   }
 ]
 
@@ -73,7 +92,11 @@ const appRoutes: Routes = [
     DashboardComponent,
     FooterComponent,
     CreatescrumComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    CreatesprintComponent,
+    LoadsprintsComponent,
+    ViewsprintComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

@@ -60,4 +60,9 @@ export class AuthService {
     return tokenNotExpired('id_token');
   }
 
+  // Check if user is a master or not
+  isMaster() {
+    return localStorage.getItem('type') == 'master' ? true : false;
+  }
+
 }

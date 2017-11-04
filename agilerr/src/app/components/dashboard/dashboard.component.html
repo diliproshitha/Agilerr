@@ -1,11 +1,50 @@
 <div class="container">
+  <div class="row container">
 
-  <h3>Your Projects</h3>
+    <!--Projects pane-->
+    <div class="col-sm-3" style="background-color: #e5e5e5; height: 90%; margin: 0 auto">
 
-  <div name="projects" class="container">
+      <h3 style="text-align: center; color: black">Your Projects</h3>
+      <hr style="color: black">
+      <ul style="list-style: none;">
+        <li *ngFor="let item of projects">
+          <a (click)="projectClicked(item)">
+            <div style="font-size: medium">
+              <img src="http://localhost:3000/images/doc.png" alt='missing' width="40" height="40"/>
+              {{ item.projectName }}
+            </div>
+          </a>
+          <hr>
+        </li>
 
+      </ul>
 
+      <div id="inner">
+        <button *ngIf="isMaster" class="btn-round" style="margin-bottom: 15px; width: 200px;" routerLink="/createProject">
+          <img src="http://localhost:3000/images/plus.png" width="37" height="37">
+          New Project
+        </button>
+      </div>
 
+    </div>
+
+    <!--Main content pane-->
+    <div class="col-sm-6">
+      <h3>Sprints</h3>
+      <hr>
+
+      <app-loadsprints></app-loadsprints>
+
+      <button *ngIf="isMaster" class="btn-round" style="margin-bottom: 15px; width: 200px; float: right" routerLink="/createSprint">
+        <img src="http://localhost:3000/images/plus.png" width="37" height="37">
+        New Sprint
+      </button>
+    </div>
+
+    <!--chat pane-->
+    <div class="col-sm-3" style="background-color: #1b8dbb; height: 800px">
+      <h3 style="text-align: center">Chat</h3>
+      <app-chat></app-chat>
+    </div>
   </div>
-
 </div>

@@ -15,6 +15,10 @@ export class CreateProjectComponent implements OnInit {
   members: String;
   splittedMembers: any;
   project = {};
+  ids = new Array();
+  description = new Array();
+  time = new Array();
+
 
   constructor(
     private dashService: DashService,
@@ -34,6 +38,9 @@ export class CreateProjectComponent implements OnInit {
       this.project['projectName'] = this.projectname;
       this.project['owner'] = localStorage.getItem('username');
       this.project['members'] = this.splittedMembers;
+      this.project['ids'] = this.ids;
+      this.project['description'] = this.description;
+      this.project['time'] = this.time;
 
       console.log(JSON.stringify(this.project));
 
