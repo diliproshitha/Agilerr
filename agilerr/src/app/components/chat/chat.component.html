@@ -1,11 +1,13 @@
-<div style="width:300px; margin:0 auto;">
+<div style="width:300px; height: 90%;">
 
-  <div style="height: 360px;">
-    <ul #chatArea>
-      <li *ngFor="let msg of msgs">{{ msg.username }} {{ msg.msg }}</li>
+  <div id="chatter" style="height: 90%; width: 85%; overflow-y: auto; border: 2px dotted #3e3f3a; border-radius: 10px; background-color: white">
+    <ul #chatArea style="list-style: none; list-style-type: none; padding-left: 10%;">
+      <li *ngFor="let msg of msgs" class="well" style=" width: 90%"><h4>{{ msg.username }}:</h4><p style="padding-left: 10px">{{ msg.msg }}</p></li>
     </ul>
   </div>
 
-  <input type="text" [(ngModel)]="text">
-  <button (click)="sendmsg()">Send</button>
+  <div style="margin-top: 5px">
+    <input type="text" [(ngModel)]="text" (keyup.enter)="sendmsg()">
+    <button (click)="sendmsg()">Send</button>
+  </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as socketIo from 'socket.io-client';
 import { DashService } from '../../services/dash.service';
+import {isNull} from "util";
 
 @Component({
   selector: 'app-chat',
@@ -49,7 +50,11 @@ export class ChatComponent implements OnInit {
           username: data.substring(data.indexOf(':') + 1, data.indexOf(';'))};
         console.log(JSON.stringify(msg));
 
-        this.msgs.push(msg);
+        if (msg.msg !== '') {
+          this.msgs.push(msg);
+        }
+        var chatter = document.getElementById('chatter');
+        chatter.scrollTop = chatter.scrollHeight;
       }
     });
   }
@@ -59,15 +64,21 @@ export class ChatComponent implements OnInit {
     this.dashService.loadChat(localStorage.getItem('currentProject')).subscribe(msgs => {
       console.log(JSON.stringify(msgs));
       this.msgs = msgs;
+      var chatter = document.getElementById('chatter');
+      chatter.scrollTop = chatter.scrollHeight;
     });
   }
 
   // Send msg with socket
   sendmsg() {
-    let msg = localStorage.getItem('currentProject') + ':' +
-              localStorage.getItem('username') + ';' + this.text;
-    this.socket.emit('sendmsg', msg);
-    this.text = '';
+    if (this.text !== '') {
+      let msg = localStorage.getItem('currentProject') + ':' +
+        localStorage.getItem('username') + ';' + this.text;
+      this.socket.emit('sendmsg', msg);
+      this.text = '';
+      var chatter = document.getElementById('chatter');
+      chatter.scrollTop = chatter.scrollHeight;
+    }
   }
 
   //Loads chat when project changed
