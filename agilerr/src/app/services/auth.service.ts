@@ -27,7 +27,11 @@ export class AuthService {
 
   storeUserData(token, user){
     localStorage.setItem('id_token', token);
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('username', user.username);
+    localStorage.setItem('email', user.email);
+    localStorage.setItem('type', user.type);
+    localStorage.setItem('name', user.name);
+    localStorage.setItem('id', user.id);
     this.authToken = token;
     this.user = user;
   }
@@ -54,6 +58,11 @@ export class AuthService {
 
   isLoggedIn(){
     return tokenNotExpired('id_token');
+  }
+
+  // Check if user is a master or not
+  isMaster() {
+    return localStorage.getItem('type') == 'master' ? true : false;
   }
 
 }

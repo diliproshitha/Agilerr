@@ -16,6 +16,14 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthService } from './services/auth.service';
 import {HttpModule} from '@angular/http';
 import { AuthGuard } from './guards/auth.guard';
+import { FooterComponent } from './components/footer/footer.component';
+import { CreatescrumComponent } from './components/createscrum/createscrum.component';
+import { CreateProjectComponent } from './components/create-project/create-project.component';
+import {DashService} from './services/dash.service';
+import { CreatesprintComponent } from './components/createsprint/createsprint.component';
+import { LoadsprintsComponent } from './components/loadsprints/loadsprints.component';
+import { ViewsprintComponent } from './components/viewsprint/viewsprint.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const appRoutes: Routes = [
   {
@@ -38,7 +46,38 @@ const appRoutes: Routes = [
   {
     path: 'dashboard',
     canActivate: [AuthGuard],
-    component: DashboardComponent
+    component: DashboardComponent,
+    children: [
+      {
+        path: 'createProject',
+        component: CreateProjectComponent,
+        outlet: 'sub'
+      },
+      {
+        path: 'viewSprint',
+        component: ViewsprintComponent
+      }
+    ]
+  },
+  {
+    path: 'createSprint',
+    canActivate: [AuthGuard],
+    component: CreatesprintComponent
+  },
+  {
+    path: 'createProject',
+    canActivate: [AuthGuard],
+    component: CreateProjectComponent
+  },
+  {
+    path: 'viewSprint',
+    canActivate: [AuthGuard],
+    component: ViewsprintComponent
+  },
+  {
+    path: 'chat',
+    canActivate: [AuthGuard],
+    component: ChatComponent
   }
 ]
 
@@ -50,7 +89,14 @@ const appRoutes: Routes = [
     RegisterComponent,
     ProfileComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    FooterComponent,
+    CreatescrumComponent,
+    CreateProjectComponent,
+    CreatesprintComponent,
+    LoadsprintsComponent,
+    ViewsprintComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +105,7 @@ const appRoutes: Routes = [
     FlashMessagesModule,
     HttpModule
   ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard, DashService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-<div class="well" style="width:400px; margin:0 auto;">
+<div class="well" style="width:400px; margin:0 auto; height: 500px; overflow-y: auto;">
   <h2 class="page-header">Register</h2>
   <form (submit)="onRegisterSubmit()">
     <div class="form-group">
@@ -17,6 +17,10 @@
       <label>Password</label>
       <input type="password" [(ngModel)]="password" class="form-control" name="password">
     </div>
+    I am a scrum :  <select [(ngModel)]="type" name="type">
+    <option value="master">Master</option>
+    <option value="member">Member</option>
+  </select> <br>
     <input type="submit" class="btn btn-primary" value="Submit">
   </form>
 

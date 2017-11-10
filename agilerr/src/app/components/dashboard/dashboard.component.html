@@ -1,3 +1,52 @@
-<p>
-  dashboard works!
-</p>
+<div class="container" style="height: 80%;">
+  <div class="row container">
+
+    <!--Projects pane-->
+    <div class="col-sm-3" style="height: 500px; position: relative;">
+
+      <div style="margin: 0 auto;">
+        <h3 style="text-align: center; color: black">My Projects</h3>
+        <hr style="color: black">
+        <ul style="list-style: none;">
+          <li *ngFor="let item of projects">
+            <a (click)="projectClicked(item)">
+              <div style="font-size: medium">
+                <img src="http://localhost:3000/images/doc.png" alt='missing' width="40" height="40"/>
+                {{ item.projectName }}
+              </div>
+            </a>
+            <hr>
+          </li>
+
+        </ul>
+
+        <div id="inner" style="margin: 0 auto;">
+          <button *ngIf="isMaster" class="btn-round" style="margin-bottom: 15px; margin-right: 2px; width: 200px; position: absolute; bottom: 0; right: 0" routerLink="/createProject">
+            <img src="http://localhost:3000/images/plus.png" width="37" height="37">
+            New Project
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!--Main content pane-->
+    <div class="col-sm-6" style="height: 500px; position: relative; background-color: #5b9496;">
+      <h3>Sprints</h3>
+      <hr>
+
+      <app-loadsprints></app-loadsprints>
+
+      <button *ngIf="isMaster" class="btn-round" style="margin-bottom: 15px; margin-right: 3px; width: 200px; position: absolute; bottom: 0; right: 0" routerLink="/createSprint">
+        <img src="http://localhost:3000/images/plus.png" width="37" height="37">
+        New Sprint
+      </button>
+    </div>
+
+    <!--chat pane-->
+    <div class="col-sm-3" style="background-color: #d9edf7; height: 500px;">
+      <h3 style="text-align: center">Chat</h3>
+      <app-chat></app-chat>
+    </div>
+  </div>
+</div>

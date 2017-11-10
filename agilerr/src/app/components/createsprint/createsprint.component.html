@@ -1,0 +1,32 @@
+<div>
+  <h3>Create a New Sprint for {{ projectName }}</h3>
+  <hr>
+
+  <label>Sprint Name: </label>
+  <input name="name" [(ngModel)]="sprintName" type="text" class="form-control" style="width: 250px">
+  <table class="table">
+    <thead>
+    <tr>
+      <th style="width: 25%">Backlog Id</th>
+      <th>User Stories</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    <tr>
+      <th style="width: 25%" scope="row"><input name="id" ng [(ngModel)]="ids[0]" type="text" class="form-control" style="width: 200px"></th>
+      <td><input name="userstories" [(ngModel)]="userStories[0]" type="text" class="form-control"></td>
+    </tr>
+    <tr>
+      <th style="width: 25%" scope="row"><input name="id" [(ngModel)]="ids[1]" type="text" class="form-control" style="width: 200px"></th>
+      <td><input name="userstories" [(ngModel)]="userStories[1]" type="text" class="form-control"></td>
+    </tr>
+    <tr>
+      <th style="width: 25%" scope="row"><input name="id" [(ngModel)]="ids[2]" type="text" class="form-control" style="width: 200px"></th>
+      <td><input name="userstories" [(ngModel)]="userStories[2]" type="text" class="form-control"></td>
+    </tr>
+    </tbody>
+  </table>
+  <button (click)="createSprint()" class="btn-success" style="float: right">Create Sprint</button>
+  <button routerLink="/dashboard" class="btn-success" style="float: right">Cancel</button>
+
+</div>

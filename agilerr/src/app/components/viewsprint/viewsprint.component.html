@@ -1,0 +1,23 @@
+<div>
+  <h3>Sprint : {{ name }}</h3>
+  <hr>
+
+  <label>Created on : </label>
+  {{ date }}
+  <table class="table">
+    <thead>
+    <tr>
+      <th style="width: 25%">Backlog Id</th>
+      <th>User Stories</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    <tr *ngFor="let id of ids; let k=index">
+      <th style="width: 25%" scope="row">{{ id }}</th>
+      <td>{{ userStories[k] }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <button routerLink="/dashboard" class="btn-success" style="float: right">Go Back</button>
+
+</div>
