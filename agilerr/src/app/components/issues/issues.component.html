@@ -1,0 +1,37 @@
+<div class="container" style="width: 60%; margin: 0 auto;">
+  <span style="font-size: x-large">Issues of {{ projectName }}</span>
+  <div style="float: right;">
+    <button class="btn btn-default" routerLink="/sprints"><< Sprints</button>
+  </div>
+  <hr>
+
+  <div *ngFor="let issue of issues; let i = index">
+
+    <div class="panel-group">
+      <div [ngClass]="(issue.issueType=='improvement')?'panel panel-success':'panel panel-danger'">
+        <div class="panel-heading">
+          <span>{{ issue.issueType }}</span>
+          <span style="float: right;">#{{ i+1 }}</span>
+        </div>
+        <div class="panel-body">
+
+          <b>{{ issue.description }}</b>
+          <hr>
+          <span>{{ issue.username }}</span>
+          <span style="float: right;">{{ issue.date }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div id="container-floating">
+  <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" routerLink="/submitIssue">
+    <p class="plus">+</p>
+    <img class="edit" src="http://localhost:3000/images/create.png">
+  </div>
+
+</div>
+

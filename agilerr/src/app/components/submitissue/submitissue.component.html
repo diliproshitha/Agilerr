@@ -1,0 +1,51 @@
+<div class="container" style="width: 60%; margin: 0 auto;">
+  <span style="font-size: x-large;"><b>Submit a Issue</b></span>
+  <div style="float: right;">
+    <button class="btn btn-default" routerLink="/issues"><< Issues</button>
+  </div>
+  <hr>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <span style="font-size: medium">Issue Type: </span>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="dropdown">
+        <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">{{ issueType }}
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a (click)="setIssueType('error')">Error</a></li>
+          <li><a (click)="setIssueType('improvement')">Improvement</a></li>
+          <!--<li><a (click)="setIssueType('error')">JavaScript</a></li>-->
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="col-sm-3">
+      <span style="font-size: medium">Priority: </span>
+    </div>
+
+  <div class="col-sm-3">
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ priority }}
+        <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a (click)="setPriority('high')">High</a></li>
+        <li><a (click)="setPriority('medium')">Medium</a></li>
+        <li><a (click)="setPriority('low')">Low</a></li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <br>
+
+
+  <div class="form-group">
+    <span style="font-size: medium">Description: </span>
+    <textarea class="form-control" rows="5" [(ngModel)]="description" placeholder="Description"></textarea>
+  </div>
+
+  <button (click)="submitIssue()" class="btn btn-info" style="float: right;">Submit Issue</button>
+</div>

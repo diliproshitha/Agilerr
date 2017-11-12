@@ -1,23 +1,43 @@
-<table class="table">
-  <thead>
-  <tr>
-    <th style="width: 5%">#</th>
-    <th>Name</th>
-    <th>Created</th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody id="tbody">
-  <tr *ngFor="let sprint of sprints">
-    <th style="width: 5%" scope="row">01</th>
-    <td>{{ sprint.name }}</td>
-    <td>{{ sprint.date }}</td>
-    <td>
-      <div class="btn-group" role="group">
-      <button type="button" class="btn btn-secondary" (click)="viewClicked(sprint._id)">View</button>
-      <button *ngIf="isMaster" type="button" class="btn btn-secondary" (click)="editClicked(sprint._id)">Edit</button>
-    </div></td>
-    <hr>
-  </tr>
-  </tbody>
-</table>
+<div class="conatainer" style="width: 80%; margin: 0 auto;">
+  <span style="font-size: x-large">Sprints of {{ projectName }}</span>
+  <div style="float: right;">
+    <button class="btn btn-default" routerLink="/dashboard"><< DashBoard</button>
+    <button class="btn btn-warning" routerLink="/issues">Issues >></button>
+  </div>
+  <hr>
+
+  <div class="col-sm-12"  *ngIf="isAvailable" style="height: 500px;">
+    <div class="row">
+      <div class="col-md-3" *ngFor="let sprint of sprints">
+        <div class="well text-{{ getColor(sprint) }}" (click)="projectClicked(item)" style=" background-color: #f2f2f2">
+          <span style="font-size: x-large">{{ sprint.name }}</span>
+          <span *ngIf="sprint.finished" style="float: right;"><img src="http://localhost:3000/images/finish.png" width="25" height="25"></span>
+
+          <hr style="border-color: black"><br>
+
+          <span>Created on {{ sprint.date }}</span>
+
+          <br>
+          <hr>
+
+          <div class="btn-group" style="width: 100%; margin: 0 auto; margin-left: 20px">
+            <button type="button" class="btn btn-success" (click)="viewClicked(sprint._id)">View</button>
+            <button type="button" class="btn btn-info" *ngIf="isMaster && !sprint.finished" (click)="editClicked(sprint._id)">Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isAvailable">
+    <span style="font-size: x-large" class="watermark">Oops!! No sprints yet :(</span>
+  </div>
+</div>
+
+<div id="container-floating" *ngIf="isMaster && !isLastFinished">
+  <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" routerLink="/createSprint">
+    <p class="plus">+</p>
+    <img class="edit" src="http://localhost:3000/images/create.png">
+  </div>
+
+</div>

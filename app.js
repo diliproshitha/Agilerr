@@ -38,7 +38,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 //Body Parser Middleware
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 
 //users route
 app.use('/users', users);

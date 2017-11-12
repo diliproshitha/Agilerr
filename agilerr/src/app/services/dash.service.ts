@@ -117,4 +117,59 @@ export class DashService {
     map(res => res.json());
   }
 
+
+  // Upload Profile picture
+  upload(formData) {
+    let headers = new Headers();
+    return this.http.post('http://localhost:3000/users/uploadProfileImage', formData, {headers: headers}).
+      map(res => res.json());
+  }
+
+  // Members Suggestions
+  suggestMembers(member) {
+    let headers = new Headers();
+    headers.append('Authorization', this.authToken);
+    return this.http.get('http://localhost:3000/users/suggestions?suggest=' + member, {headers: headers}).
+      map(res => res.json());
+  }
+
+  //update sprint
+  updateSprint(sprint) {
+    console.log(sprint);
+    let headers = new Headers();
+    this.loadInfo();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/dashboard/editsprint', sprint, {headers: headers}).
+    map(res => res.json());
+  }
+
+  //finish sprint
+  finishSprint(sprintId) {
+    let headers = new Headers();
+    headers.append('Authorization', this.authToken);
+    return this.http.get('http://localhost:3000/dashboard/finishSprint?sprintId=' + sprintId, {headers: headers}).
+      map(res => res.json());
+  }
+
+  //Submit Issue
+  submitIssue(issue) {
+    let headers = new Headers();
+    this.loadInfo();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/dashboard/submitIssue', issue, {headers: headers}).
+      map(res => res.json());
+  }
+
+  //Get issues
+  getIssues() {
+    this.loadInfo();
+    let headers = new Headers();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/dashboard/getIssues?projectId='+this.projectId, {headers: headers}).
+      map(res => res.json());
+  }
+
 }

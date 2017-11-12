@@ -65,4 +65,25 @@ export class AuthService {
     return localStorage.getItem('type') == 'master' ? true : false;
   }
 
+  //checks username
+  checkUser(username) {
+
+    let url = 'http://localhost:3000/users/checkuser?username=' + username;
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(url, {headers: headers}).
+    map(res => res.json());
+  }
+
+  checkEmail (email) {
+
+    let url = 'http://localhost:3000/users/checkemail?email=' + email;
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(url, {headers: headers}).
+    map(res => res.json());
+  }
+
 }

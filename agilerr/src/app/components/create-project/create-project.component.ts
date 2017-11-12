@@ -12,12 +12,20 @@ import { Router } from '@angular/router';
 export class CreateProjectComponent implements OnInit {
 
   projectname: String;
+  //string in text field
   members: String;
+  //splitted members to send to the server
   splittedMembers: any;
   project = {};
   ids = new Array();
   description = new Array();
   time = new Array();
+  //suggestions received from server
+  suggestions = new Array();
+  isSuggestionsOn: boolean = false;
+  splitted = new Array();
+
+  rows = [1, 2];
 
 
   constructor(
@@ -53,10 +61,14 @@ export class CreateProjectComponent implements OnInit {
           this.router.navigate(['/createProject']);
         }
       });
-
-
     }
+  }
 
+  //Add Rows to table
+  addRows() {
+
+    let index = this.rows[this.rows.length - 1];
+    this.rows.push(++index);
 
   }
 
@@ -64,6 +76,32 @@ export class CreateProjectComponent implements OnInit {
   seperateMembers(memberString) {
     let re = /\s*,\s*/;
     this.splittedMembers = memberString.split(re);
+  }
+
+  //Suggest Members from database
+  suggestMembers() {
+
+
+
+    if (this.members == '') {
+      this.suggestions = [];
+    }
+
+    if (this.members !== '') {
+      this.splitted = this.members.split(',');
+
+      console.log(this.splitted);
+    }
+
+    this.dashService.suggestMembers(this.splitted[this.splitted.length - 1]).subscribe(data => {
+      if (data.success) {
+        if (data.users) {
+          this.isSuggestionsOn = true;
+          this.suggestions = data.users;
+          console.log(data);
+        }
+      }
+    });
   }
 
 }

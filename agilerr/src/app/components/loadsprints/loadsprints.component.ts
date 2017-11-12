@@ -12,8 +12,13 @@ export class LoadsprintsComponent implements OnInit {
 
   sprints: any;
   isMaster: boolean;
+  isAvailable: boolean;
+  classes = ['success', 'danger', 'primary', 'warning'];
+  projectName: String;
 
   projectId: String;
+
+  isLastFinished: boolean = false;
 
   constructor(
     private dashService: DashService,
@@ -27,9 +32,23 @@ export class LoadsprintsComponent implements OnInit {
   ngOnInit() {
 
     this.isMaster = this.authService.isMaster();
+    this.projectName = localStorage.getItem('projectName');
 
     this.dashService.loadSprints(this.dashService.getProjectId()).subscribe(sprints => {
-      this.sprints = sprints;
+
+      if (sprints) {
+        this.sprints = sprints;
+        this.isAvailable = true;
+
+        console.log(this.sprints[this.sprints.length - 1].finished);
+
+        if (!this.sprints[this.sprints.length - 1].finished) {
+          this.isLastFinished = true;
+        }
+
+      } else {
+        this.isAvailable = false;
+      }
     }, err => {
       console.log(err);
     });
@@ -53,6 +72,15 @@ export class LoadsprintsComponent implements OnInit {
   editClicked(id) {
     localStorage.setItem('currentSprint', id);
     this.router.navigate(['/editSprint']);
+  }
+
+  // Get Random classes
+  getColor(sprint) {
+    if (sprint.finished) {
+      return 'danger';
+    } else {
+      return 'success';
+    }
   }
 
 }

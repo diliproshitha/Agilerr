@@ -4,6 +4,18 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 
+const multer = require('multer');
+// const upload = multer({dest: 'img/profile'});
+
+var storage = multer.diskStorage({
+    destination: 'img/profile',
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    }
+});
+
+var upload = multer({ storage: storage });
+
 const User = require('../models/user');
 
 //Register
@@ -70,6 +82,67 @@ router.get('/profile', passport.authenticate('jwt', {session: false}), function 
 //Validate
 router.get('/validate', function (req, res) {
     res.send('VALIDATE');
+});
+
+//Get User or check user
+router.get('/checkuser', function (req, res) {
+    const username = req.query.username;
+
+    User.getUserByUsername(username, function (err, user) {
+        if (err) throw err;
+
+        if (!user) {
+            return res.json({success: false});
+        } else {
+            return res.json({success: true});
+        }
+    });
+});
+
+//Check email available or not
+router.get('/checkemail', function (req, res) {
+    const email = req.query.email;
+
+    User.getEmail(email, function (err, email) {
+        if (err) throw err;
+
+        if (!email) {
+            return res.json({success: false});
+        } else {
+            return res.json({success: true});
+        }
+    });
+});
+
+//Upload profile image
+router.post('/uploadProfileImage', upload.single('profile'), function (req, res, next) {
+    if (!req.file) {
+        console.log('No file found!');
+        return res.json({success: false});
+    } else {
+
+
+
+        console.log('File received : '+ req.body.filename);
+        return res.json({success: true});
+    }
+    
+});
+
+// User Suggestions
+router.get('/suggestions', passport.authenticate('jwt', {session: false}), function (req, res) {
+    if (req.query.suggest) {
+
+        User.getSuggestions(req.query.suggest, function (err, users) {
+            if (err) throw err;
+
+            if (!users) {
+                return res.json({success: false});
+            }
+
+            return res.json({success: true, users: users});
+        })
+    }
 });
 
 //export

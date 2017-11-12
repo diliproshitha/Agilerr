@@ -1,6 +1,8 @@
 <div>
   <h3>Sprint : {{ name }}</h3>
   <hr>
+  <button *ngIf="isMaster && !finished" class="btn btn-warning" (click)="finishSprint()" style="float: right">Mark as Finished</button>
+  <button *ngIf="finished" class="btn btn-danger" style="float: right">This is a Finished Sprint</button>
 
   <label>Created on : </label>
   {{ date }}
@@ -18,6 +20,6 @@
     </tr>
     </tbody>
   </table>
-  <button routerLink="/dashboard" class="btn-success" style="float: right">Go Back</button>
+  <button routerLink="/sprints" class="btn btn-success" style="float: right">Go Back</button>
 
 </div>

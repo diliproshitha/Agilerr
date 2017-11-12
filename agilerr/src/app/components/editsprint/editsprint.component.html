@@ -1,0 +1,25 @@
+<div>
+  <span style="font-size: xx-large">Edit Sprint : </span><input name="name" [(ngModel)]="name" type="text" class="form-control" style="width: 250px">
+  <button *ngIf="isMaster && !finished" class="btn btn-warning" (click)="finishSprint()" style="float: right">Mark as Finished</button>
+  <button *ngIf="finished" class="btn btn-danger" style="float: right">This is a Finished Sprint</button>
+  <hr>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th style="width: 25%">Backlog Id</th>
+      <th>User Stories</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    <tr *ngFor="let id of ids; let k=index">
+      <th style="width: 25%" scope="row"><input style="width: 200px" class="form-control" type="text" [(ngModel)]="ids[k]"> </th>
+      <td><input class="form-control" type="text" [(ngModel)]="userStories[k]"> </td>
+    </tr>
+    </tbody>
+  </table>
+  <button (click)="addRows()" class="btn btn-primary" style="float: left">Add Rows</button>
+  <button *ngIf="!finished" (click)="update()" class="btn btn-success" style="float: right">Update</button>
+  <button routerLink="/sprints" class="btn btn-info" style="float: right">Go Back</button>
+
+</div>
