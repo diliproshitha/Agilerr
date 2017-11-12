@@ -1,3 +1,11 @@
+#error {
+  background-color: #1b8dbb;
+}
+
+#improvement {
+  background-color: #89be3d;
+}
+
 body{
   font-family: 'Roboto';
   text-align: center;
@@ -30,7 +38,7 @@ h3{
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background: #79a736;
+  background: #d3a411;
   position: fixed;
   bottom: 30px;
   right: 30px;

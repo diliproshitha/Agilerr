@@ -21,6 +21,10 @@ const SprintSchema = mongoose.Schema({
     userStories: {
         type: Array,
         required: true
+    },
+    finished: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -39,4 +43,24 @@ module.exports.loadSprint = function (sprintId, callback) {
     var objId = new ObjectId(sprintId);
     const query = {_id: objId};
     Sprint.find(query, callback);
+}
+
+//update sprint
+module.exports.updateSprint = function(sprint, callback) {
+    var objId = new ObjectId(sprint.sprintId);
+
+    var condition = {_id: objId}
+    var options = { multi: false };
+
+    Sprint.update(condition, {name: sprint.name, ids: sprint.ids, userStories: sprint.userStories}, options, callback);
+}
+
+//mark as finished
+module.exports.markAsFinish = function(sprintId, callback) {
+    var objId = new ObjectId(sprintId);
+
+    var condition = {_id: objId}
+    var options = { multi: false };
+
+    Sprint.update(condition, {finished: true}, options, callback);
 }

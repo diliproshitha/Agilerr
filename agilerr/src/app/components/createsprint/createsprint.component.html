@@ -12,21 +12,22 @@
     </tr>
     </thead>
     <tbody id="tbody">
-    <tr>
-      <th style="width: 25%" scope="row"><input name="id" ng [(ngModel)]="ids[0]" type="text" class="form-control" style="width: 200px"></th>
-      <td><input name="userstories" [(ngModel)]="userStories[0]" type="text" class="form-control"></td>
+    <tr *ngFor="let count of rows; let i = index">
+      <th style="width: 25%" scope="row"><input name="id" ng [(ngModel)]="ids[i]" type="text" class="form-control" style="width: 200px"></th>
+      <td><input name="userstories" [(ngModel)]="userStories[i]" type="text" class="form-control"></td>
     </tr>
-    <tr>
-      <th style="width: 25%" scope="row"><input name="id" [(ngModel)]="ids[1]" type="text" class="form-control" style="width: 200px"></th>
-      <td><input name="userstories" [(ngModel)]="userStories[1]" type="text" class="form-control"></td>
-    </tr>
-    <tr>
-      <th style="width: 25%" scope="row"><input name="id" [(ngModel)]="ids[2]" type="text" class="form-control" style="width: 200px"></th>
-      <td><input name="userstories" [(ngModel)]="userStories[2]" type="text" class="form-control"></td>
-    </tr>
+    <!--<tr>-->
+      <!--<th style="width: 25%" scope="row"><input name="id" [(ngModel)]="ids[1]" type="text" class="form-control" style="width: 200px"></th>-->
+      <!--<td><input name="userstories" [(ngModel)]="userStories[1]" type="text" class="form-control"></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<th style="width: 25%" scope="row"><input name="id" [(ngModel)]="ids[2]" type="text" class="form-control" style="width: 200px"></th>-->
+      <!--<td><input name="userstories" [(ngModel)]="userStories[2]" type="text" class="form-control"></td>-->
+    <!--</tr>-->
     </tbody>
   </table>
-  <button (click)="createSprint()" class="btn-success" style="float: right">Create Sprint</button>
-  <button routerLink="/dashboard" class="btn-success" style="float: right">Cancel</button>
+  <button (click)="addRows()" class="btn btn-primary" style="float: left">[+] Add Rows</button>
+  <button (click)="createSprint()" class="btn btn-info" style="float: right">Create Sprint</button>
+  <button routerLink="/sprints" class="btn btn-success" style="float: right">Cancel</button>
 
 </div>

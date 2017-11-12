@@ -12,7 +12,12 @@
     <tbody>
     <tr>
       <th style="width: 25%" scope="row"><input required placeholder="Enter project name" name="id" ng [(ngModel)]="projectname" type="text" class="form-control" style="width: 200px"></th>
-      <td><input required placeholder="Enter comma seperated usernames (Ex: bob, sam)" name="userstories" [(ngModel)]="members" type="text" class="form-control"></td>
+      <td>
+        <input required placeholder="Search for the members here" name="userstories" [(ngModel)]="members" (keyup)="suggestMembers()" type="text" class="form-control" list="suggestions">
+        <datalist id="suggestions">
+          <option *ngFor="let user of suggestions" value="{{ user.username }}, " text="{{ user.name }}">
+        </datalist>
+      </td>
     </tr>
     </tbody>
   </table>
@@ -29,19 +34,22 @@
     </tr>
     </thead>
     <tbody id="tbody">
-    <tr>
-      <th style="width: 25%" scope="row"><input name="id" ng [(ngModel)]="ids[0]" type="text" class="form-control" style="width: 200px"></th>
-      <td><input name="userstories" [(ngModel)]="description[0]" type="text" class="form-control"></td>
-      <td style="width: 20%"><input name="userstories" [(ngModel)]="time[0]" type="text" class="form-control"></td>
+    <tr *ngFor="let count of rows; let i = index">
+      <th style="width: 25%" scope="row"><input name="id" ng [(ngModel)]="ids[i]" type="text" class="form-control" style="width: 200px"></th>
+      <td><input name="userstories" [(ngModel)]="description[i]" type="text" class="form-control"></td>
+      <td style="width: 20%"><input name="userstories" [(ngModel)]="time[i]" type="text" class="form-control"></td>
     </tr>
-    <tr>
-      <th style="width: 25%" scope="row"><input name="id" [(ngModel)]="ids[1]" type="text" class="form-control" style="width: 200px"></th>
-      <td><input name="userstories" [(ngModel)]="description[1]" type="text" class="form-control"></td>
-      <td style="width: 20%"><input name="userstories" [(ngModel)]="time[1]" type="text" class="form-control"></td>
-    </tr>
+    <!--<tr>-->
+      <!--<th style="width: 25%" scope="row"><input name="id" [(ngModel)]="ids[1]" type="text" class="form-control" style="width: 200px"></th>-->
+      <!--<td><input name="userstories" [(ngModel)]="description[1]" type="text" class="form-control"></td>-->
+      <!--<td style="width: 20%"><input name="userstories" [(ngModel)]="time[1]" type="text" class="form-control"></td>-->
+    <!--</tr>-->
     </tbody>
   </table>
 
+  <button (click)="addRows()" class="btn btn-primary" style="float: left">Add Rows</button>
 
-  <button (click)="onCreateSubmit()" class="btn-success" style="float: right">Create Project</button>
+
+  <button (click)="onCreateSubmit()" class="btn btn-success" style="float: right">Create Project</button>
+  <button routerLink="/dashboard" class="btn btn-info" style="float: right">Cancel</button>
 </div>

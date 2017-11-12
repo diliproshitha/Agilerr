@@ -1,7 +1,37 @@
-<div *ngIf="user" >
-  <h2 class="page-header">{{user.name}}</h2>
+<div *ngIf="user" style="width: 60%; margin: 0 auto;">
+  <div>
+    <span class="page-header" style="font-size: xx-large">{{user.name}}</span>
+    <img src="http://localhost:3000/images/profile/{{ user.username }}" onerror="this.src='http://localhost:3000/images/profile/default.jpg';" style="float: right; width: 75px; height: 75px">
+  </div>
+  <br>
+
+  <hr>
   <ul class="list-group">
     <li class="list-group-item">Username: {{user.username}}</li>
     <li class="list-group-item">Email: {{user.email}}</li>
   </ul>
+
+  <br>
+  <input name="profile" type="file" #fileInput placeholder="Upload file..." />
+  <button type="button" (click)="upload()">Upload</button>
+
+  <div>
+    <!--<img [src]="fileInput.nativeElement.value" *ngIf="fileInput.nativeElement.value"/>-->
+  </div>
+
+  <!--<div class="input-group">-->
+            <!--<span class="input-group-btn">-->
+                <!--<span class="btn btn-default btn-file">-->
+                    <!--Browse… <input type="file" id="imgInp">-->
+                <!--</span>-->
+            <!--</span>-->
+    <!--<input type="text" class="form-control" readonly>-->
+  <!--</div>-->
+  <!--<img id='img-upload'/>-->
+
+  <!--<form action="http://localhost:3000/users/uploadProfileImage'" method="post" enctype="multipart/form-data">-->
+    <!--<input type="file" name="profile" placeholder="Select file"/>-->
+    <!--<br/>-->
+    <!--<button>Upload</button>-->
+  <!--</form>-->
 </div>

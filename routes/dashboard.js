@@ -5,7 +5,9 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 
 const Project = require('../models/projects');
-const Sprint = require('../models/sprint')
+const Sprint = require('../models/sprint');
+const Issue = require('../models/issue');
+
 
 // Add Project
 router.post('/createproject', passport.authenticate('jwt', {session: false}), function(req, res) {
@@ -115,6 +117,74 @@ router.get('/getsprint', passport.authenticate('jwt', {session: false}), functio
 
         res.json(sprint);
 
+    });
+
+});
+
+// Edit a Sprint
+router.post('/editsprint', passport.authenticate('jwt', {session: false}), function(req, res) {
+    updateSprint = {};
+    updateSprint['sprintId'] = req.body.sprintId;
+    updateSprint['ids'] = req.body.ids;
+    updateSprint['userStories'] = req.body.userStories;
+    updateSprint['name'] = req.body.name;
+
+    console.log(updateSprint);
+
+    Sprint.updateSprint(updateSprint, function (err, sprint) {
+        if (err) {
+            res.json({success: false, msg: 'Failed to update sprint!'});
+            console.log(err);
+        } else {
+            res.json({success: true, msg: 'Sprint updated successfully!'})
+        }
+    });
+});
+
+// Mark Sprint as Finished
+router.get('/finishSprint', passport.authenticate('jwt', {session: false}), function (req, res) {
+    Sprint.markAsFinish(req.query.sprintId, function (err, sprint) {
+        if (err) {
+            res.json({success: false, msg: 'Failed to mark as finished :('});
+        } else {
+            res.json({success: true, msg: 'Sprint marked as finished :)'});
+        }
+    });
+});
+
+//Submit a new Issue
+router.post('/submitIssue', passport.authenticate('jwt', {session: false}), function (req, res) {
+    newIssue = new Issue({
+        issueType: req.body.type,
+        priority: req.body.priority,
+        description: req.body.description,
+        username: req.body.username,
+        projectId: req.body.projectId,
+        date: req.body.date
+
+    });
+
+    Issue.addIssue(newIssue, function (err, issue) {
+        if (err) {
+            console.log(err);
+            res.json({success: false, msg: 'Failed to submit Issue!'});
+        } else {
+            res.json({success: true, msg: 'Issue Submitted Successfully!'});
+        }
+    });
+});
+
+// Get issues
+router.get('/getIssues', passport.authenticate('jwt', {session: false}), function (req, res) {
+
+    Issue.getIssues(req.query.projectId, function (err, issues) {
+        if (err) throw err;
+
+        if (!issues) {
+            return res.json({success: false, msg: 'No Issues Found!'});
+        }
+
+        res.json({success: true, issues: issues});
     });
 
 });

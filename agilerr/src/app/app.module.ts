@@ -24,6 +24,9 @@ import { CreatesprintComponent } from './components/createsprint/createsprint.co
 import { LoadsprintsComponent } from './components/loadsprints/loadsprints.component';
 import { ViewsprintComponent } from './components/viewsprint/viewsprint.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { EditsprintComponent } from './components/editsprint/editsprint.component';
+import { IssuesComponent } from './components/issues/issues.component';
+import { SubmitissueComponent } from './components/submitissue/submitissue.component';
 
 const appRoutes: Routes = [
   {
@@ -50,12 +53,23 @@ const appRoutes: Routes = [
     children: [
       {
         path: 'createProject',
-        component: CreateProjectComponent,
-        outlet: 'sub'
+        component: CreateProjectComponent
       },
       {
         path: 'viewSprint',
         component: ViewsprintComponent
+      },
+      {
+        path: 'issues',
+        canActivate: [AuthGuard],
+        component: IssuesComponent,
+        children: [
+          {
+            path: 'submitIssue',
+            canActivate: [AuthGuard],
+            component: SubmitissueComponent
+          }
+        ]
       }
     ]
   },
@@ -63,6 +77,21 @@ const appRoutes: Routes = [
     path: 'createSprint',
     canActivate: [AuthGuard],
     component: CreatesprintComponent
+  },
+  {
+    path: 'sprints',
+    canActivate: [AuthGuard],
+    component: LoadsprintsComponent
+  },
+  {
+    path: 'submitIssue',
+    canActivate: [AuthGuard],
+    component: SubmitissueComponent
+  },
+  {
+    path: 'issues',
+    canActivate: [AuthGuard],
+    component: IssuesComponent
   },
   {
     path: 'createProject',
@@ -73,6 +102,11 @@ const appRoutes: Routes = [
     path: 'viewSprint',
     canActivate: [AuthGuard],
     component: ViewsprintComponent
+  },
+  {
+    path: 'editSprint',
+    canActivate: [AuthGuard],
+    component: EditsprintComponent
   },
   {
     path: 'chat',
@@ -96,7 +130,10 @@ const appRoutes: Routes = [
     CreatesprintComponent,
     LoadsprintsComponent,
     ViewsprintComponent,
-    ChatComponent
+    ChatComponent,
+    EditsprintComponent,
+    IssuesComponent,
+    SubmitissueComponent
   ],
   imports: [
     BrowserModule,

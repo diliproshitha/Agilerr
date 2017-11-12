@@ -54,3 +54,14 @@ module.exports.comparePassword = function (candidatePassword, hash, callback) {
     });
 }
 
+module.exports.getEmail = function (email, callback) {
+    const query = {email: email};
+    User.findOne(query, callback);
+}
+
+module.exports.getSuggestions = function (string, callback) {
+    const query = {username: {$regex : '.*' + string + '.*'}};
+    User.find(query, {name: 1, username: 1}, callback);
+}
+
+
