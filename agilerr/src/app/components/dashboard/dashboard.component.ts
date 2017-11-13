@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
       if (projects) {
         this.projects = projects;
         this.isAvailable = true;
+        console.log(this.projects);
       } else {
         this.isAvailable = false;
       }

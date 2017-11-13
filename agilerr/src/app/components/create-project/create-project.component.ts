@@ -15,15 +15,19 @@ export class CreateProjectComponent implements OnInit {
   //string in text field
   members: String;
   //splitted members to send to the server
-  splittedMembers: any;
+  splittedMembers = [];
   project = {};
   ids = new Array();
+  projectDescription: String = '';
   description = new Array();
   time = new Array();
   //suggestions received from server
   suggestions = new Array();
   isSuggestionsOn: boolean = false;
   splitted = new Array();
+
+  //flag to display autocomplete
+  flag: boolean = true;
 
   rows = [1, 2];
 
@@ -46,6 +50,7 @@ export class CreateProjectComponent implements OnInit {
       this.project['projectName'] = this.projectname;
       this.project['owner'] = localStorage.getItem('username');
       this.project['members'] = this.splittedMembers;
+      this.project['projectDesc'] = this.projectDescription;
       this.project['ids'] = this.ids;
       this.project['description'] = this.description;
       this.project['time'] = this.time;
@@ -72,7 +77,7 @@ export class CreateProjectComponent implements OnInit {
 
   }
 
-  // Seperates usernames from textarea
+  // Seperates usernames from textarea to send to server
   seperateMembers(memberString) {
     let re = /\s*,\s*/;
     this.splittedMembers = memberString.split(re);
@@ -81,14 +86,15 @@ export class CreateProjectComponent implements OnInit {
   //Suggest Members from database
   suggestMembers() {
 
-
-
     if (this.members == '') {
+      this.splitted = [];
       this.suggestions = [];
+      this.flag = false;
     }
 
     if (this.members !== '') {
-      this.splitted = this.members.split(',');
+      this.flag = true;
+      this.splitted = this.members.split(', ');
 
       console.log(this.splitted);
     }
@@ -98,10 +104,28 @@ export class CreateProjectComponent implements OnInit {
         if (data.users) {
           this.isSuggestionsOn = true;
           this.suggestions = data.users;
-          console.log(data);
+          console.log(data.users);
         }
       }
     });
+  }
+
+  // On select a autocomplete option
+  onAutoCompleteClick(username) {
+
+    let memberSplitted = this.members.split(', ');
+    let memberString = '';
+
+    memberSplitted[memberSplitted.length - 1] = username;
+
+    for (let i = 0; i < memberSplitted.length; i++) {
+      memberString += memberSplitted[i] + ', ';
+    }
+
+    this.members = memberString;
+
+    console.log(this.splitted);
+    console.log(this.members);
   }
 
 }

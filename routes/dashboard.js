@@ -15,6 +15,7 @@ router.post('/createproject', passport.authenticate('jwt', {session: false}), fu
         projectName: req.body.projectName,
         owner: req.body.owner,
         members: req.body.members,
+        projectDesc: req.body.projectDesc,
         ids: req.body.ids,
         description: req.body.description,
         time: req.body.time

@@ -13,6 +13,10 @@ const ProjectsSchema = mongoose.Schema({
         type: Array,
         required: true
     },
+    projectDesc: {
+        type: String,
+        required: true
+    },
     ids: {
         type: Array,
         required: true
