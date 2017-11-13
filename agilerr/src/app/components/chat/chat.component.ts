@@ -15,10 +15,14 @@ export class ChatComponent implements OnInit {
   text = ''; //get chat box text
   msgs = new Array();
   projectId: String;
+  projectName: String;
+  username: String;
 
   constructor(private dashService: DashService) {
 
     this.projectId = localStorage.getItem('currentProject');
+    this.projectName = localStorage.getItem('projectName');
+    this.username = localStorage.getItem('username');
 
     //Event emitter
     this.dashService.projectChanged.subscribe(
@@ -42,27 +46,30 @@ export class ChatComponent implements OnInit {
     // receive msg under project Id
     this.socket.on(this.projectId, (data) => {
       if (data.substring(0, data.indexOf(':')) == localStorage.getItem('currentProject')) {
-        console.log(data.substring(data.indexOf(';') + 1));
-        console.log(data.substring(0, data.indexOf(':')));
-        console.log(data.substring(data.indexOf(':') + 1, data.indexOf(';')));
 
         let msg = {msg: data.substring(data.indexOf(';') + 1),
           username: data.substring(data.indexOf(':') + 1, data.indexOf(';'))};
-        console.log(JSON.stringify(msg));
 
         if (msg.msg !== '') {
           this.msgs.push(msg);
         }
-        var chatter = document.getElementById('chatter');
-        chatter.scrollTop = chatter.scrollHeight;
+
+
+        setTimeout(this.scrollBottom(), 2000);
+
       }
     });
+  }
+
+  //scolls bottom after msg receive
+  scrollBottom() {
+    var chatter = document.getElementById('chatter');
+    chatter.scrollTop = chatter.scrollHeight;
   }
 
   //Load msgs from Database
   loadChat() {
     this.dashService.loadChat(localStorage.getItem('currentProject')).subscribe(msgs => {
-      console.log(JSON.stringify(msgs));
       this.msgs = msgs;
       var chatter = document.getElementById('chatter');
       chatter.scrollTop = chatter.scrollHeight;
