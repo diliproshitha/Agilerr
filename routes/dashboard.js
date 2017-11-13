@@ -190,6 +190,21 @@ router.get('/getIssues', passport.authenticate('jwt', {session: false}), functio
 
 });
 
+// Get issues
+router.get('/getProject', passport.authenticate('jwt', {session: false}), function (req, res) {
+
+    Project.getProject(req.query.projectId, function (err, project) {
+        if (err) throw err;
+
+        if (!project) {
+            return res.json({success: false, msg: 'No Issues Found!'});
+        }
+
+        res.json({success: true, project: project});
+    });
+
+});
+
 
 //export router
 module.exports = router;
