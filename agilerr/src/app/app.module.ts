@@ -28,6 +28,7 @@ import { EditsprintComponent } from './components/editsprint/editsprint.componen
 import { IssuesComponent } from './components/issues/issues.component';
 import { SubmitissueComponent } from './components/submitissue/submitissue.component';
 import { ViewbacklogComponent } from './components/viewbacklog/viewbacklog.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
 
 const appRoutes: Routes = [
   {
@@ -118,6 +119,11 @@ const appRoutes: Routes = [
     path: 'chat',
     canActivate: [AuthGuard],
     component: ChatComponent
+  },
+  {
+    path: 'timeline',
+    canActivate: [AuthGuard],
+    component: TimelineComponent
   }
 ]
 
@@ -140,7 +146,8 @@ const appRoutes: Routes = [
     EditsprintComponent,
     IssuesComponent,
     SubmitissueComponent,
-    ViewbacklogComponent
+    ViewbacklogComponent,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,

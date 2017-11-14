@@ -18,7 +18,7 @@ router.post('/createproject', passport.authenticate('jwt', {session: false}), fu
         projectDesc: req.body.projectDesc,
         ids: req.body.ids,
         description: req.body.description,
-        time: req.body.time
+        time: req.body.date
     });
 
     Project.addProject(newProject, function (err, project) {
@@ -197,7 +197,7 @@ router.get('/getProject', passport.authenticate('jwt', {session: false}), functi
         if (err) throw err;
 
         if (!project) {
-            return res.json({success: false, msg: 'No Issues Found!'});
+            return res.json({success: false, msg: 'No projects Found!'});
         }
 
         res.json({success: true, project: project});
@@ -215,6 +215,7 @@ router.get('/getProjectCount', function (req, res) {
         return res.json(count);
     });
 });
+
 
 
 //export router

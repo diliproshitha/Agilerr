@@ -104,6 +104,8 @@ export class CreateProjectComponent implements OnInit {
         if (data.users) {
           this.isSuggestionsOn = true;
 
+          this.suggestions = [];
+
           for (let user of data.users) {
             if (this.isMember(user.type))
               this.suggestions.push(user);
