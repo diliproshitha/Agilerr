@@ -1,0 +1,28 @@
+<div class="container">
+
+  <span style="font-size: x-large">Product Backlog for {{ projectName }}</span>
+  <button style="float: right;" class="btn btn-default" routerLink="/sprints"><< Sprints</button>
+  <hr>
+
+  <table style="width: 80%; margin: 0 auto;">
+    <thead>
+      <th style="width: 20%">
+        ID
+      </th>
+      <th style="width: 50%">
+        Description
+      </th>
+      <th style="width: 30%">
+        Allocated Weeks
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of project; let i = index">
+        <td>{{ row.ids[i] }}</td>
+        <td>{{ row.description[i] }}</td>
+        <td>{{ row.time[i] }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
