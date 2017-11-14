@@ -53,3 +53,7 @@ module.exports.getProject = function (id, callback) {
     const query = {_id: objId};
     Project.find(query, callback);
 }
+
+module.exports.getProjectCount = function (callback) {
+    Project.count({}, callback);
+}

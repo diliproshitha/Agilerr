@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89cbf09e-683f-4bae-9c20-926a5be80929" name="Default" comment="Dashborad improvements">
+    <list default="true" id="89cbf09e-683f-4bae-9c20-926a5be80929" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agilerr/src/app/app.module.ts" afterPath="$PROJECT_DIR$/agilerr/src/app/app.module.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agilerr/src/app/components/create-project/create-project.component.html" afterPath="$PROJECT_DIR$/agilerr/src/app/components/create-project/create-project.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agilerr/src/app/components/create-project/create-project.component.ts" afterPath="$PROJECT_DIR$/agilerr/src/app/components/create-project/create-project.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agilerr/src/app/components/home/home.component.html" afterPath="$PROJECT_DIR$/agilerr/src/app/components/home/home.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agilerr/src/app/components/home/home.component.ts" afterPath="$PROJECT_DIR$/agilerr/src/app/components/home/home.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agilerr/src/app/services/dash.service.ts" afterPath="$PROJECT_DIR$/agilerr/src/app/services/dash.service.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/projects.js" afterPath="$PROJECT_DIR$/models/projects.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/user.js" afterPath="$PROJECT_DIR$/models/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/dashboard.js" afterPath="$PROJECT_DIR$/routes/dashboard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/users.js" afterPath="$PROJECT_DIR$/routes/users.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,40 +25,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="viewbacklog.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/viewbacklog/viewbacklog.component.html">
+      <file leaf-file-name="home.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/home/home.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="29" lean-forward="false" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+            <state relative-caret-position="126">
+              <caret line="7" column="58" lean-forward="false" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#0;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#1;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#2;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="viewbacklog.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/viewbacklog/viewbacklog.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="24" column="32" lean-forward="true" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dash.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agilerr/src/app/services/dash.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="174" column="16" lean-forward="true" selection-start-line="174" selection-start-column="16" selection-end-line="174" selection-end-column="16" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -86,11 +66,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/agilerr/src/app/components/home/home.component.ts" />
         <option value="$PROJECT_DIR$/agilerr/src/app/app.component.ts" />
         <option value="$PROJECT_DIR$/agilerr/src/app/components/createsprint/createsprint.component.css" />
         <option value="$PROJECT_DIR$/agilerr/src/app/components/footer/footer.component.css" />
-        <option value="$PROJECT_DIR$/agilerr/src/app/components/home/home.component.html" />
         <option value="$PROJECT_DIR$/agilerr/package.json" />
         <option value="$PROJECT_DIR$/models/chat.js" />
         <option value="$PROJECT_DIR$/routes/chat.js" />
@@ -102,8 +80,6 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/agilerr/src/app/components/profile/profile.component.ts" />
         <option value="$PROJECT_DIR$/agilerr/src/app/components/profile/profile.component.html" />
-        <option value="$PROJECT_DIR$/models/user.js" />
-        <option value="$PROJECT_DIR$/routes/users.js" />
         <option value="$PROJECT_DIR$/models/sprint.js" />
         <option value="$PROJECT_DIR$/agilerr/src/app/components/viewsprint/viewsprint.component.ts" />
         <option value="$PROJECT_DIR$/agilerr/src/app/components/editsprint/editsprint.component.ts" />
@@ -127,16 +103,20 @@
         <option value="$PROJECT_DIR$/agilerr/src/app/components/chat/chat.component.css" />
         <option value="$PROJECT_DIR$/agilerr/src/app/components/chat/chat.component.html" />
         <option value="$PROJECT_DIR$/agilerr/src/app/components/create-project/create-project.component.css" />
-        <option value="$PROJECT_DIR$/agilerr/src/app/components/create-project/create-project.component.html" />
-        <option value="$PROJECT_DIR$/agilerr/src/app/components/create-project/create-project.component.ts" />
         <option value="$PROJECT_DIR$/agilerr/src/app/components/dashboard/dashboard.component.ts" />
         <option value="$PROJECT_DIR$/agilerr/src/app/components/dashboard/dashboard.component.html" />
         <option value="$PROJECT_DIR$/agilerr/src/app/app.module.ts" />
-        <option value="$PROJECT_DIR$/models/projects.js" />
-        <option value="$PROJECT_DIR$/routes/dashboard.js" />
-        <option value="$PROJECT_DIR$/agilerr/src/app/services/dash.service.ts" />
         <option value="$PROJECT_DIR$/agilerr/src/app/components/viewbacklog/viewbacklog.component.ts" />
         <option value="$PROJECT_DIR$/agilerr/src/app/components/viewbacklog/viewbacklog.component.html" />
+        <option value="$PROJECT_DIR$/agilerr/src/app/components/create-project/create-project.component.html" />
+        <option value="$PROJECT_DIR$/agilerr/src/app/components/create-project/create-project.component.ts" />
+        <option value="$PROJECT_DIR$/models/projects.js" />
+        <option value="$PROJECT_DIR$/routes/dashboard.js" />
+        <option value="$PROJECT_DIR$/routes/users.js" />
+        <option value="$PROJECT_DIR$/models/user.js" />
+        <option value="$PROJECT_DIR$/agilerr/src/app/services/dash.service.ts" />
+        <option value="$PROJECT_DIR$/agilerr/src/app/components/home/home.component.ts" />
+        <option value="$PROJECT_DIR$/agilerr/src/app/components/home/home.component.html" />
       </list>
     </option>
   </component>
@@ -174,7 +154,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -215,7 +194,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="viewbacklog" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="agilerr" type="b2602c69:ProjectViewProjectNode" />
@@ -228,12 +207,18 @@
             <path>
               <item name="agilerr" type="b2602c69:ProjectViewProjectNode" />
               <item name="agilerr" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="agilerr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="agilerr" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -344,7 +329,8 @@
       <workItem from="1510493794297" duration="152000" />
       <workItem from="1510498548072" duration="13031000" />
       <workItem from="1510548592251" duration="13687000" />
-      <workItem from="1510595396178" duration="2470000" />
+      <workItem from="1510595396178" duration="2570000" />
+      <workItem from="1510637317674" duration="5972000" />
     </task>
     <task id="LOCAL-00001" summary="Chat Completed! Need to enhance UI">
       <created>1509790480623</created>
@@ -388,11 +374,25 @@
       <option name="project" value="LOCAL" />
       <updated>1510572872001</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="view backlog">
+      <created>1510597922468</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1510597922468</updated>
+    </task>
+    <task id="LOCAL-00008" summary="view backlog">
+      <created>1510639592802</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1510639592803</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="345450000" />
+    <option name="totallyTimeSpent" value="351522000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="216" y="28" width="1303" height="780" extended-state="6" />
@@ -433,7 +433,9 @@
     <MESSAGE value="Chat improved" />
     <MESSAGE value="Members autocomplete" />
     <MESSAGE value="members autocomplete" />
-    <option name="LAST_COMMIT_MESSAGE" value="members autocomplete" />
+    <MESSAGE value="view backlog" />
+    <MESSAGE value="get users and project count" />
+    <option name="LAST_COMMIT_MESSAGE" value="get users and project count" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -448,20 +450,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/register/register.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/register/register.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="14" column="8" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="18" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/register/register.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -500,24 +488,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/createscrum/createscrum.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="742">
-          <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -653,6 +627,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="4" selection-end-column="8" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -736,14 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/create-project/create-project.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="52" column="31" lean-forward="false" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/dashboard/dashboard.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -757,17 +727,6 @@
         <state relative-caret-position="18">
           <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/create-project/create-project.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#li#0;n#ul#0;n#div#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -787,50 +746,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/projects.js">
+    <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/viewbacklog/viewbacklog.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="54" selection-end-column="1" />
+        <state relative-caret-position="35">
+          <caret line="3" column="29" lean-forward="false" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#table#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#0;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#1;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#2;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/viewbacklog/viewbacklog.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#50#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/create-project/create-project.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/create-project/create-project.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="24" column="18" lean-forward="false" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="204" column="0" lean-forward="true" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+        <state relative-caret-position="415">
+          <caret line="217" column="0" lean-forward="false" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/projects.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="58" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="148" column="26" lean-forward="false" selection-start-line="148" selection-start-column="26" selection-end-line="148" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/agilerr/src/app/services/dash.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="174" column="16" lean-forward="true" selection-start-line="174" selection-start-column="16" selection-end-line="174" selection-end-column="16" />
+        <state relative-caret-position="321">
+          <caret line="192" column="3" lean-forward="true" selection-start-line="192" selection-start-column="3" selection-end-line="192" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/viewbacklog/viewbacklog.component.ts">
+    <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/home/home.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="32" lean-forward="true" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+        <state relative-caret-position="321">
+          <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/viewbacklog/viewbacklog.component.html">
+    <entry file="file://$PROJECT_DIR$/agilerr/src/app/components/home/home.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="29" lean-forward="false" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+        <state relative-caret-position="126">
+          <caret line="7" column="58" lean-forward="false" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
           <folding>
             <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#0;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#1;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#2;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -61,7 +61,10 @@ module.exports.getEmail = function (email, callback) {
 
 module.exports.getSuggestions = function (string, callback) {
     const query = {username: {$regex : '.*' + string + '.*'}};
-    User.find(query, {name: 1, username: 1}, callback);
+    User.find(query, {name: 1, username: 1, type: 1}, callback);
 }
 
+module.exports.getUsersCount = function (callback) {
+    User.count({}, callback);
+}
 

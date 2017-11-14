@@ -22,10 +22,10 @@
         <div class="search-result" *ngIf="flag">
           <ul>
             <li *ngFor="let user of suggestions" (click)="onAutoCompleteClick(user.username)">
-
+              <div>
                 <img style="width: 30px; height: 30px; border-radius: 50%" class="user-photo" src="http://localhost:3000/images/profile/{{ user.username }}" onerror="this.src='http://localhost:3000/images/profile/default.jpg';">
                 {{ user.name }}
-
+              </div>
             </li>
           </ul>
         </div>

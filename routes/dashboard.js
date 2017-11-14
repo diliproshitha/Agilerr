@@ -205,6 +205,17 @@ router.get('/getProject', passport.authenticate('jwt', {session: false}), functi
 
 });
 
+// Get projectCount
+router.get('/getProjectCount', function (req, res) {
+
+    Project.getProjectCount(function (err, count) {
+
+        if (err) throw err;
+
+        return res.json(count);
+    });
+});
+
 
 //export router
 module.exports = router;

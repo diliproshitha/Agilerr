@@ -103,8 +103,14 @@ export class CreateProjectComponent implements OnInit {
       if (data.success) {
         if (data.users) {
           this.isSuggestionsOn = true;
-          this.suggestions = data.users;
+
+          for (let user of data.users) {
+            if (this.isMember(user.type))
+              this.suggestions.push(user);
+          }
+
           console.log(data.users);
+          console.log(this.suggestions);
         }
       }
     });
@@ -126,6 +132,15 @@ export class CreateProjectComponent implements OnInit {
 
     console.log(this.splitted);
     console.log(this.members);
+  }
+
+  // test weather user is member
+  isMember(user) {
+    if (user == 'member') {
+      console.log('True');
+      return true;
+    }
+    return false;
   }
 
 }

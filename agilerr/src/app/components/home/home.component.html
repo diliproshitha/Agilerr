@@ -3,6 +3,10 @@
   <h1>Plan Your Sprints here..</h1><br>
   <h2>With us..</h2><br><br>
 
+  <span style="font-size: x-large"> {{ projectsCount }} Projects</span>
+  <br>
+  <span style="font-size: x-large"> {{ usersCount }} Users</span>
+
   <div *ngIf="!authService.isLoggedIn()">
   <button class="btn-success" style="width: 150px; height: 60px; font-size: medium" routerLink="login">Log In Now</button>
   Or
