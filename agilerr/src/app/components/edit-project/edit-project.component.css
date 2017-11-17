@@ -1,0 +1,27 @@
+.search-result {
+  border: 1px solid #ccc;
+  width: 50%;
+  background-color: white;
+  cursor: pointer;
+  text-align: left;
+  max-height: 350px;
+  overflow: auto;
+  position: absolute;
+  z-index: 7;
+}
+
+.search-result ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+.search-result ul li {
+  border-bottom: #ccc solid 1px;
+  padding: 5px 0px 5px 10px;
+  color: #79a736;
+}
+
+.search-result ul li:hover {
+  background: #f2f2f2;
+}
