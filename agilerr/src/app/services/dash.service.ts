@@ -198,4 +198,14 @@ export class DashService {
     map(res => res.json());
   }
 
+  //Create a new project
+  updateProject (project) {
+    let headers = new Headers();
+    this.loadInfo();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/dashboard/updateproject', project, {headers: headers}).
+    map(res => res.json());
+  }
+
 }

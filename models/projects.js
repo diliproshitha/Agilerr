@@ -57,3 +57,20 @@ module.exports.getProject = function (id, callback) {
 module.exports.getProjectCount = function (callback) {
     Project.count({}, callback);
 }
+
+module.exports.updateProject = function (project, callback) {
+    var objId = new ObjectId(project['id']);
+
+    var condition = {_id: objId}
+    var options = {
+        projectName: project['projectName'],
+        members: project['members'],
+        projectDesc: project['projectDesc'],
+        ids: project['ids'],
+        description: project['description'],
+        time: project['time']
+
+    };
+
+    Project.update(condition, options, {multi: false}, callback);
+}

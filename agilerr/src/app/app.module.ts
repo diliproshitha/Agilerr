@@ -29,6 +29,8 @@ import { IssuesComponent } from './components/issues/issues.component';
 import { SubmitissueComponent } from './components/submitissue/submitissue.component';
 import { ViewbacklogComponent } from './components/viewbacklog/viewbacklog.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
+import { ChartsModule } from 'ng2-charts';
+import { EditProjectComponent } from './components/edit-project/edit-project.component';
 
 const appRoutes: Routes = [
   {
@@ -116,6 +118,11 @@ const appRoutes: Routes = [
     component: ViewbacklogComponent
   },
   {
+    path: 'editProject',
+    canActivate: [AuthGuard],
+    component: EditProjectComponent
+  },
+  {
     path: 'chat',
     canActivate: [AuthGuard],
     component: ChatComponent
@@ -147,14 +154,16 @@ const appRoutes: Routes = [
     IssuesComponent,
     SubmitissueComponent,
     ViewbacklogComponent,
-    TimelineComponent
+    TimelineComponent,
+    EditProjectComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
     FlashMessagesModule,
-    HttpModule
+    HttpModule,
+    ChartsModule
   ],
   providers: [ValidateService, AuthService, AuthGuard, DashService],
   bootstrap: [AppComponent]

@@ -216,6 +216,31 @@ router.get('/getProjectCount', function (req, res) {
     });
 });
 
+// Add Project
+router.post('/updateproject', passport.authenticate('jwt', {session: false}), function(req, res) {
+    const project = {};
+
+    project['id'] = req.body.id;
+    project['members'] = req.body.members;
+    project['projectName'] = req.body.projectName;
+    project['members'] = req.body.members;
+    project['projectDesc'] = req.body.projectDesc;
+    project['ids'] = req.body.ids;
+    project['description'] = req.body.description;
+    project['time'] = req.body.time;
+
+    console.log(project);
+
+    Project.updateProject(project, function (err, project) {
+
+        if (err) {
+            res.json({success: false, msg: 'Failed to update project'});
+        } else {
+            res.json({success: true, msg: 'Project updated'})
+        }
+    })
+});
+
 
 
 //export router
