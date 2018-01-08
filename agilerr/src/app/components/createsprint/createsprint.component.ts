@@ -20,6 +20,8 @@ export class CreatesprintComponent implements OnInit {
   storyCount = 0;
   formattedDate: String;
   projectName: String;
+  backlogItem: String = "Select Backlog Item";
+  backlogDesriptions = new Array();
 
   sprint = {};
 
@@ -32,6 +34,10 @@ export class CreatesprintComponent implements OnInit {
   ) {
     this.projectId = localStorage.getItem('currentProject');
     this.projectName = localStorage.getItem('projectName');
+
+    this.dashService.loadProject().subscribe(project => {
+      this.backlogDesriptions = project.project[0].description;
+    });
   }
 
   ngOnInit() {
@@ -42,6 +48,7 @@ export class CreatesprintComponent implements OnInit {
     this.sprint['ids'] = this.ids;
     this.sprint['userStories'] = this.userStories;
     this.sprint['name'] = this.sprintName;
+    this.sprint['backlogItem'] = this.backlogItem;
 
     this.getFormattedDate();
     this.sprint['date'] = this.formattedDate;
@@ -57,7 +64,7 @@ export class CreatesprintComponent implements OnInit {
 
   getFormattedDate() {
     var d = new Date();
-    this.formattedDate = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
+    this.formattedDate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
   }
 
   //Add Rows to table
@@ -66,6 +73,10 @@ export class CreatesprintComponent implements OnInit {
     let index = this.rows[this.rows.length - 1];
     this.rows.push(++index);
 
+  }
+
+  setBacklogItem(item) {
+    this.backlogItem = item;
   }
 
 }

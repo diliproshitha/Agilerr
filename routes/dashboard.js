@@ -73,7 +73,8 @@ router.post('/createsprint', passport.authenticate('jwt', {session: false}), fun
         name: req.body.name,
         date: req.body.date,
         ids: req.body.ids,
-        userStories: req.body.userStories
+        userStories: req.body.userStories,
+        backlogItem: req.body.backlogItem
     });
 
     Sprint.addSprint(newSprint, function (err, sprint) {
@@ -201,6 +202,21 @@ router.get('/setIssuesAsFinished', passport.authenticate('jwt', {session: false}
         }
 
         res.json({success: true, issues: issues});
+    });
+
+});
+
+// Get an individual project
+router.get('/getProject', passport.authenticate('jwt', {session: false}), function (req, res) {
+
+    Project.getProject(req.query.projectId, function (err, project) {
+        if (err) throw err;
+
+        if (!project) {
+            return res.json({success: false, msg: 'No Issues Found!'});
+        }
+
+        res.json({success: true, project: project});
     });
 
 });

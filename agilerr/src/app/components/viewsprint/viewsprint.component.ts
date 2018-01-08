@@ -17,6 +17,7 @@ export class ViewsprintComponent implements OnInit {
   sprint: any;
   date: String;
   finished: boolean = false;
+  backlogItem: String;
 
   //is member a master
   isMaster: boolean;
@@ -38,6 +39,7 @@ export class ViewsprintComponent implements OnInit {
       this.ids = sprint[0].ids;
       this.finished = sprint[0].finished;
       this.userStories = sprint[0].userStories;
+      this.backlogItem = sprint[0].backlogItem;
     }, err => {
       console.log(err);
     });

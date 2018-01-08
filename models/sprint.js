@@ -25,6 +25,10 @@ const SprintSchema = mongoose.Schema({
     finished: {
         type: Boolean,
         default: false
+    },
+    backlogItem: {
+        type: String,
+        required: true
     }
 });
 

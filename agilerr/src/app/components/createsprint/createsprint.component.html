@@ -4,10 +4,24 @@
 
   <label>Sprint Name: </label>
   <input name="name" [(ngModel)]="sprintName" type="text" class="form-control" style="width: 250px">
+  <label>Goes under: </label>
+  <div class="col-sm-3">
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ backlogItem }}
+        <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li *ngFor="let description of backlogDesriptions"><a (click)="setBacklogItem(description)"> {{ description }}</a> </li>
+        <!--<li><a (click)="setPriority('high')">High</a></li>-->
+        <!--<li><a (click)="setPriority('medium')">Medium</a></li>-->
+        <!--<li><a (click)="setPriority('low')">Low</a></li>-->
+      </ul>
+    </div>
+  </div>
+
   <table class="table">
     <thead>
     <tr>
-      <th style="width: 25%">Backlog Id</th>
+      <th style="width: 25%">Sprint Id</th>
       <th>User Stories</th>
     </tr>
     </thead>

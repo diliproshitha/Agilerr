@@ -181,4 +181,14 @@ export class DashService {
     map(res => res.json());
   }
 
+  // Get Project
+  loadProject() {
+    this.loadInfo();
+    let headers = new Headers();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/dashboard/getProject' + '?projectId=' + this.projectId, {headers: headers}).
+    map(res => res.json());
+  }
+
 }
