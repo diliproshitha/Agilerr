@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit {
 
       if (projects) {
         this.projects = projects;
+        console.log(this.projects);
         this.isAvailable = true;
       } else {
         this.isAvailable = false;
@@ -43,6 +44,7 @@ export class DashboardComponent implements OnInit {
     });
 
     this.isMaster = this.authService.isMaster();
+
   }
 
   ngOnInit() {

@@ -61,7 +61,7 @@ export class SubmitissueComponent implements OnInit {
   //returns formatted date string
   getFormattedDate() {
     var d = new Date();
-    this.formattedDate = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
+    this.formattedDate = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
   }
 
 }

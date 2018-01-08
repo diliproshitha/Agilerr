@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const objectId = require('mongodb').ObjectId;
+const ObjectId = require('mongodb').ObjectId;
 
 const IssueSchema = mongoose.Schema(
     {
@@ -26,6 +26,10 @@ const IssueSchema = mongoose.Schema(
         date: {
             type: String,
             required: true
+        },
+        fixed: {
+            type: Boolean,
+            required: true
         }
     }
 );
@@ -39,4 +43,12 @@ module.exports.addIssue = function (newIssue, callback) {
 module.exports.getIssues = function (projectId, callback) {
     const query = {projectId: projectId};
     Issue.find(query, callback);
+}
+
+module.exports.setFinished = function (issueId, callback) {
+    var objId = new ObjectId(issueId);
+
+    var condition = {_id: objId}
+    var options = { fixed: true };
+    Issue.update(condition, {fixed: 'true'}, callback);
 }

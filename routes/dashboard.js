@@ -160,7 +160,8 @@ router.post('/submitIssue', passport.authenticate('jwt', {session: false}), func
         description: req.body.description,
         username: req.body.username,
         projectId: req.body.projectId,
-        date: req.body.date
+        date: req.body.date,
+        fixed: 'false'
 
     });
 
@@ -182,6 +183,21 @@ router.get('/getIssues', passport.authenticate('jwt', {session: false}), functio
 
         if (!issues) {
             return res.json({success: false, msg: 'No Issues Found!'});
+        }
+
+        res.json({success: true, issues: issues});
+    });
+
+});
+
+// Set issues as Finished
+router.get('/setIssuesAsFinished', passport.authenticate('jwt', {session: false}), function (req, res) {
+
+    Issue.setFinished(req.query.issueId, function (err, issues) {
+        if (err) throw err;
+
+        if (!issues) {
+            return res.json({success: false, msg: 'Could not change property'});
         }
 
         res.json({success: true, issues: issues});

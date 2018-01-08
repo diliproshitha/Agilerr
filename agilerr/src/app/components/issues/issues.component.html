@@ -16,6 +16,9 @@
         <div class="panel-body">
 
           <b>{{ issue.description }}</b>
+          <span style="float: right">
+            <button *ngIf="issue.fixed" class="btn btn-success">Fixed</button>
+            <button *ngIf="!issue.fixed" class="btn btn-success" style="border-radius: 50px;" (click)="setAsFixed(issue._id)">&#10003;</button> </span>
           <hr>
           <span>{{ issue.username }}</span>
           <span style="float: right;">{{ issue.date }}</span>

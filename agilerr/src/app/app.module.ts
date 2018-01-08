@@ -27,6 +27,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { EditsprintComponent } from './components/editsprint/editsprint.component';
 import { IssuesComponent } from './components/issues/issues.component';
 import { SubmitissueComponent } from './components/submitissue/submitissue.component';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 const appRoutes: Routes = [
   {
@@ -112,6 +113,11 @@ const appRoutes: Routes = [
     path: 'chat',
     canActivate: [AuthGuard],
     component: ChatComponent
+  },
+  {
+    path: 'progress',
+    canActivate: [AuthGuard],
+    component: CreatescrumComponent
   }
 ]
 
@@ -140,7 +146,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     FlashMessagesModule,
-    HttpModule
+    HttpModule,
+    ChartsModule
   ],
   providers: [ValidateService, AuthService, AuthGuard, DashService],
   bootstrap: [AppComponent]

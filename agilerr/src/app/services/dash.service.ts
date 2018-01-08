@@ -172,4 +172,13 @@ export class DashService {
       map(res => res.json());
   }
 
+  //Set issue as Finished
+  setIssueAsFixed(issueId) {
+    let headers = new Headers();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/dashboard/setIssuesAsFinished?issueId=' + issueId, {headers: headers}).
+    map(res => res.json());
+  }
+
 }

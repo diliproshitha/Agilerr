@@ -8,7 +8,7 @@ import {DashService} from "../../services/dash.service";
 })
 export class IssuesComponent implements OnInit {
 
-  issues = {};
+  issues = Array;
   error = 'error';
   projectName: String = localStorage.getItem('projectName');
 
@@ -20,14 +20,31 @@ export class IssuesComponent implements OnInit {
         console.log('No Projects found!');
       } else {
         this.issues = issues.issues;
+        console.log(this.issues);
       }
     });
+
+
   }
 
   isError(type) {
     if (type === 'error')
       return true;
     return false;
+  }
+
+  setAsFixed(issueId) {
+    console.log(issueId);
+    this.dashService.setIssueAsFixed(issueId).subscribe(data => {
+      console.log(data);
+      if (data.success) {
+        for (let i = 0; i < this.issues.length; i++) {
+          if (this.issues[i]._id == issueId) {
+            this.issues[i].fixed = true;
+          }
+        }
+      }
+    });
   }
 
 }
