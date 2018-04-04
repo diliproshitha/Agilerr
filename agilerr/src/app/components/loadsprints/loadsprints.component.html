@@ -1,43 +1,90 @@
-<div class="conatainer" style="width: 80%; margin: 0 auto;">
-  <span style="font-size: x-large">Sprints of {{ projectName }}</span>
-  <div style="float: right;">
-    <button class="btn btn-default" routerLink="/dashboard"><< DashBoard</button>
-    <button class="btn btn-warning" routerLink="/issues">Issues >></button>
-  </div>
-  <hr>
-
-  <div class="col-sm-12"  *ngIf="isAvailable" style="height: 500px;">
-    <div class="row">
-      <div class="col-md-3" *ngFor="let sprint of sprints">
-        <div class="well text-{{ getColor(sprint) }}" (click)="projectClicked(item)" style=" background-color: #f2f2f2">
-          <span style="font-size: x-large">{{ sprint.name }}</span>
-          <span *ngIf="sprint.finished" style="float: right;"><img src="http://localhost:3000/images/finish.png" width="25" height="25"></span>
-
-          <hr style="border-color: black"><br>
-
-          <span>Created on {{ sprint.date }}</span>
-
-          <br>
-          <hr>
-
-          <div class="btn-group" style="width: 100%; margin: 0 auto; margin-left: 20px">
-            <button type="button" class="btn btn-success" (click)="viewClicked(sprint._id)">View</button>
-            <button type="button" class="btn btn-info" *ngIf="isMaster && !sprint.finished" (click)="editClicked(sprint._id)">Edit</button>
+<div class="deep-purple lighten-3" style="margin:0; padding-bottom: 50px">
+    <h2 style="margin: 0; padding: 10px">Sprints of {{ projectName }}</h2>
+    <div style="float: right; padding-right: 50px">
+        <a class="btn waves-effect" routerLink="/dashboard"><i class="large material-icons">chevron_left</i>DashBoard</a>
+        <a class="btn waves-effect" routerLink="/viewBacklog">BackLog</a>
+        <a class="btn waves-effect" routerLink="/editProject">Edit Project</a>
+        <a class="btn waves-effect" routerLink="/issues"><i class="large material-icons">chevron_right</i>Issues</a>
+    </div>
+    <div class="col s12" *ngIf="isAvailable" style="padding-bottom: 100px; max-width: 70%;padding-top: 50px; margin-left: auto; margin-right: auto">
+      <div class="row">
+        <div class="col s4" *ngFor="let sprint of sprints" style="padding: 10px;">
+          <div class="{{ getColor(sprint) }} sprints" (click)="projectClicked(item)" style=" background-color: #f2f2f2">
+            <span style="font-size: x-large">{{ sprint.name }}</span>
+            <span *ngIf="sprint.finished" style="float: right;"><img src="http://localhost:3000/images/finish.gif" width="25" height="25"></span>
+            <hr style="border-color: black"><br>
+            <span>Created on {{ sprint.date }}</span>
+            <br>
+            <hr>
+            <div class="btn-group" style="width: 100%; margin: 0 auto; margin-left: 20px">
+              <button type="button" class="btn btn-success" (click)="viewClicked(sprint._id)">View</button>
+              <button type="button" class="btn btn-info" *ngIf="isMaster && !sprint.finished" (click)="editClicked(sprint._id)">Edit</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div *ngIf="!isAvailable">
-    <span style="font-size: x-large" class="watermark">Oops!! No sprints yet :(</span>
-  </div>
+    <div class="row" *ngIf="isSprintsEmpty">
+        <div class="col s4">
+            <img src="../../../assets/images/sprint.gif">
+        </div>
+        <div class="col s4" style="text-align: right">
+          <br><br><br>
+            <h2>Hurry Up Plan Your First sprint!</h2>
+        </div>
+      </div>
+    <div *ngIf="!isAvailable">
+      <span style="font-size: x-large" class="watermark">Oops!! No sprints yet :(</span>
+    </div>
 </div>
 
-<div id="container-floating" *ngIf="isMaster && !isLastFinished">
-  <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" routerLink="/createSprint">
-    <p class="plus">+</p>
-    <img class="edit" src="http://localhost:3000/images/create.png">
-  </div>
-
+<div class="fixed-action-btn" *ngIf="isMaster && !isLastFinished" style="margin-right: 160px">
+  <a class="btn-floating btn-large green btn tooltipped" routerLink="/createSprint">
+    <i class="large material-icons">add</i>
+  </a>
 </div>
+
+<app-chatwrap></app-chatwrap>
+
+<!--<div class="conatainer" style="width: 80%; margin: 0 auto;">
+    <span style="font-size: x-large">Sprints of {{ projectName }}</span>
+    <div style="float: right;">
+      <a class="btn waves-effect" routerLink="/dashboard"><i class="large material-icons">chevron_left</i>DashBoard</a>
+      <a class="btn waves-effect" routerLink="/issues"><i class="large material-icons">chevron_right</i>Issues</a>
+    </div>
+    <hr>
+    <div class="col-sm-12"  *ngIf="isAvailable" style="height: 500px;">
+      <div class="row">
+        <div class="col-md-3" *ngFor="let sprint of sprints">
+          <div class="well text-{{ getColor(sprint) }}" (click)="projectClicked(item)" style=" background-color: #f2f2f2">
+            <span style="font-size: x-large">{{ sprint.name }}</span>
+            <span *ngIf="sprint.finished" style="float: right;"><img src="http://localhost:3000/images/finish.png" width="25" height="25"></span>
+  
+            <hr style="border-color: black"><br>
+  
+            <span>Created on {{ sprint.date }}</span>
+  
+            <br>
+            <hr>
+  
+            <div class="btn-group" style="width: 100%; margin: 0 auto; margin-left: 20px">
+              <button type="button" class="btn btn-success" (click)="viewClicked(sprint._id)">View</button>
+              <button type="button" class="btn btn-info" *ngIf="isMaster && !sprint.finished" (click)="editClicked(sprint._id)">Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="!isAvailable">
+      <span style="font-size: x-large" class="watermark">Oops!! No sprints yet :(</span>
+    </div>
+  </div>
+  
+  <div id="container-floating" *ngIf="isMaster && !isLastFinished">
+    <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" routerLink="/createSprint">
+      <p class="plus">+</p>
+      <img class="edit" src="http://localhost:3000/images/create.png">
+    </div>
+  
+  </div>-->

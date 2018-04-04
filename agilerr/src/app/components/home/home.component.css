@@ -1,11 +1,57 @@
-body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #eee;
+.med{
+  /*top: 80px;*/
+  left: 80%;
+  max-width: 160%;
+  float: right;
 }
 
-.fix{
-  position:fixed;
-  bottom:0px;
-  left:50%;
+.front-text{
+  font-family: Orbitron;
+  font-weight: 500;
+  line-height: 26.4px;
+  top: 255px;
+  margin-left: 30px;
+  color: rgb(41, 39, 39);
+}
+
+.home-div{
+  /*position: absolute;*/
+  display: block;
+  max-width: 100%;
+  margin-top: 0;
+  margin-bottom:0;
+  padding: 0;
+}
+
+.details{
+  /*position: absolute*/
+  /*top:500px;*/
+  display: block;
+  margin-top: 0;
+  margin-bottom:0;
+}
+
+.home-des{
+  max-width: 80%;
+}
+
+.home-dis{
+  max-width: 40%;
+}
+
+.home-sea{
+  max-width: 90%;
+}
+
+.f{
+  color: white;
+  margin: 0;
+}
+
+.description{
+  font-family: "Sigmar One";
+}
+
+.descr{
+  font-family: Orbitron;
 }

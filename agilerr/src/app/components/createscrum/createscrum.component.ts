@@ -1,5 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import { DashService } from "../../services/dash.service";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-createscrum',
@@ -8,9 +7,7 @@ import { DashService } from "../../services/dash.service";
 })
 export class CreatescrumComponent implements OnInit {
 
-  @ViewChild('myChart') myChart;
-
-  constructor(private dashService: DashService) { }
+  constructor() { }
 
   ngOnInit() {
   }

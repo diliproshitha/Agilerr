@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {DashService} from "../../services/dash.service";
-import {FlashMessagesService} from "angular2-flash-messages";
-import {Router} from "@angular/router";
+import {DashService} from '../../services/dash.service';
+import {FlashMessagesService} from 'angular2-flash-messages';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-submitissue',
@@ -46,7 +46,7 @@ export class SubmitissueComponent implements OnInit {
     this.getFormattedDate();
     this.issue['date'] = this.formattedDate;
 
-    //Parse issue object to dash service to submit
+    // Parse issue object to dash service to submit
     this.dashService.submitIssue(this.issue).subscribe(data => {
       if (data.success) {
         this.flashMessages.show('Issue submitted successfully', {cssClass: 'alert-success', timeout: 3000});
@@ -58,10 +58,9 @@ export class SubmitissueComponent implements OnInit {
     });
   }
 
-  //returns formatted date string
+  // returns formatted date string
   getFormattedDate() {
-    var d = new Date();
-    this.formattedDate = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+    let d = new Date();
+    this.formattedDate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
   }
-
 }

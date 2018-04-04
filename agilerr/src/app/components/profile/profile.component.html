@@ -1,37 +1,42 @@
-<div *ngIf="user" style="width: 60%; margin: 0 auto;">
-  <div>
-    <span class="page-header" style="font-size: xx-large">{{user.name}}</span>
-    <img src="http://localhost:3000/images/profile/{{ user.username }}" onerror="this.src='http://localhost:3000/images/profile/default.jpg';" style="float: right; width: 75px; height: 75px">
+<div *ngIf="user" style="background-image: url('../../../assets/images/prof-back.jpg'); margin: o; margin-bottom: 0; padding-bottom: 15px" class="row">
+  <div class="col s4" style="padding-top: 100px; padding-right: 50px">
+    <img src="http://localhost:3000/images/profile/{{ user.username }}" onerror="this.src='http://localhost:3000/images/profile/default.gif';" style="top: 150px; width: 250px; height: 250px; border-radius: 50%" class="right">
   </div>
-  <br>
+  <div class="col s4" style="margin-right: 0; float: left;">
+    <h3 class="page-header">{{user.name}}</h3>
+    <label style="color:white"><h5>Your User Name :</h5></label>
+    <div class="input-field">
+      <input style="color:white;font-size: 20px;" disabled value={{user.username}}>
+    </div>
+    <label style="color:white"><h5>Your E-Mail :</h5></label>
+    <div class="input-field">
+      <input style="color:white;font-size: 20px;" disabled value={{user.email}}>
+    </div>
+    <br>
+    <div class="">
+      <input class="" name="profile" type="file" #fileInput placeholder="Upload file..."  style=""/>
+      <button class="btn" type="button" (click)="upload()">Upload</button>  
+    </div>
+  </div>
+  <div class="col s2 card-panel light-green lighten-1" style="float:right; text-align: center; padding-right: 10px; margin-right: 10px">
+    <h2> {{projectsCount}}</h2>
+    <h5>Projects</h5>
+  </div>
+  <div class="col s12 left-align" *ngIf="authService.isLoggedIn()" style="padding-left: 100px">
+    <h5>Visit Your Projects.</h5>
+    <button class="btn waves-effect waves-light green accent-4 btn-large cyan pulse" routerLink="/dashboard">Go to Dashboard
+        <i class="material-icons right">send</i>
+    </button>
+    <h6>Manage Them.</h6>
+  </div>
+</div>
 
-  <hr>
+<app-chatwrap></app-chatwrap>
+
+<!--<div *ngIf="user" >
+  <h2 class="page-header">{{user.name}}</h2>
   <ul class="list-group">
     <li class="list-group-item">Username: {{user.username}}</li>
     <li class="list-group-item">Email: {{user.email}}</li>
   </ul>
-
-  <br>
-  <input name="profile" type="file" #fileInput placeholder="Upload file..." />
-  <button type="button" (click)="upload()">Upload</button>
-
-  <div>
-    <!--<img [src]="fileInput.nativeElement.value" *ngIf="fileInput.nativeElement.value"/>-->
-  </div>
-
-  <!--<div class="input-group">-->
-            <!--<span class="input-group-btn">-->
-                <!--<span class="btn btn-default btn-file">-->
-                    <!--Browse… <input type="file" id="imgInp">-->
-                <!--</span>-->
-            <!--</span>-->
-    <!--<input type="text" class="form-control" readonly>-->
-  <!--</div>-->
-  <!--<img id='img-upload'/>-->
-
-  <!--<form action="http://localhost:3000/users/uploadProfileImage'" method="post" enctype="multipart/form-data">-->
-    <!--<input type="file" name="profile" placeholder="Select file"/>-->
-    <!--<br/>-->
-    <!--<button>Upload</button>-->
-  <!--</form>-->
-</div>
+</div>-->

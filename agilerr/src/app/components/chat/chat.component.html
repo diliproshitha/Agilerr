@@ -1,14 +1,31 @@
-<div style="width:300px; height: 90%;">
+<div class="chatbox">
+  <div style="border-style: solid; border-color: #c7254e; border-radius: 5px">
 
-  <div id="chatter" style="height: 90%; width: 85%; overflow-y: auto; border: 2px dotted #3e3f3a; border-radius: 10px; background-color: white">
-    <ul #chatArea style="list-style: none; list-style-type: none; padding-left: 10%;">
-      <li *ngFor="let msg of msgs" class="well" style=" width: 90%; background-color: #46ff59"><h4>{{ msg.username }}:</h4><p style="padding-left: 10px">{{ msg.msg }}</p></li>
-    </ul>
-  </div>
+    <div style="background-color: #c7254e; height: 50px; margin-top: 0">
+      <h4>{{ projectName }}</h4>
+    </div>
 
-  <div style="margin-top: 5px">
-    <input type="text" [(ngModel)]="text" (keyup.enter)="sendmsg()">
-    <button (click)="sendmsg()">Send</button>
+    <div class="chatlogs" id="chatter">
+
+      <div class="chat friend" *ngFor="let msg of msgs" [ngClass]="(msg.username==username)?'chat self':'chat friend'">
+
+        <div class="user-photo">
+          <img class="user-photo" src="http://localhost:3000/images/profile/{{ msg.username }}" onerror="this.src='http://localhost:3000/images/profile/default.gif';">
+        </div>
+
+        <div class="chat-message">
+          <span style="font-size: small">{{ msg.username }}</span><hr>
+          <p>{{ msg.msg }}</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="chat-form blue-grey" style="margin:0; padding: 10px">
+      <textarea [(ngModel)]="text" (keyup.enter)="sendmsg()"></textarea>
+      <button (click)="sendmsg()">Send</button>
+    </div>
+
   </div>
 </div>
-

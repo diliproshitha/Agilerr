@@ -1,58 +1,28 @@
-<!--<div class="container" style="height: 80%; width: 100%;">-->
-  <!--<div class="row container" style="width: 100%;">-->
+<div class="grey lighten-2" style="margin: 0 auto;text-align: center">
+  <h3 style="margin-top: 0; padding-top: 15px">My Projects</h3>
+  <hr>
+  <div class="col s12"  *ngIf="isAvailable" style="height: 500px; max-width: 80%;padding-top: 50px; margin-left: auto; margin-right: auto">
+    <div class="row">
+      <div class="col s3 m3" *ngFor="let item of projects" style="">
+        <div class="{{getRandomClasses()}} projects" (click)="projectClicked(item)" style="height: 200px">
+          <h4>{{ item.projectName }}</h4>
+          <hr style="border-color: black">
+          <span> {{ item.projectDesc }}</span>
+        </div>
+      </div>
+    </div>  
+  </div>
+  <div *ngIf="!isAvailable" style="top: 20px; height: 500px">
+    <span style="font-size: x-large" class="watermark">Oops!! You dont have projects :P</span>
+    <div class="bottom" style="float: right">
+      <img src="../../../assets/images/cry.png" width="400" height="400">
+    </div>
+  </div>
+</div>
 
-    <!--&lt;!&ndash;Projects pane&ndash;&gt;-->
-    <!--<div class="col-sm-3" style="height: 500px; position: relative;">-->
+<app-chatwrap></app-chatwrap>
 
-      <!--<div style="margin: 0 auto;">-->
-        <!--<h3 style="text-align: center; color: black">My Projects</h3>-->
-        <!--<hr style="color: black">-->
-        <!--<ul style="list-style: none;">-->
-          <!--<li *ngFor="let item of projects">-->
-            <!--<button class="tablink" (click)="projectClicked(item)">-->
-              <!--&lt;!&ndash;<div style="font-size: medium">&ndash;&gt;-->
-                <!--&lt;!&ndash;<img src="http://localhost:3000/images/doc.png" alt='missing' width="40" height="40"/>&ndash;&gt;-->
-                <!--{{ item.projectName }}-->
-              <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--</button>-->
-            <!--<hr>-->
-          <!--</li>-->
-
-        <!--</ul>-->
-
-        <!--<div id="inner" style="margin: 0 auto;">-->
-          <!--<button *ngIf="isMaster" class="btn-round" style="margin-bottom: 15px; margin-right: 2px; width: 200px; position: absolute; bottom: 0; right: 0" routerLink="/createProject">-->
-            <!--<img src="http://localhost:3000/images/plus.png" width="37" height="37">-->
-            <!--New Project-->
-          <!--</button>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <!--&lt;!&ndash;Main content pane&ndash;&gt;-->
-    <!--<div class="col-sm-6" style="height: 500px; position: relative; background-color: white;">-->
-      <!--<div id="sprints" style="height: 50%; overflow-y: auto;">-->
-        <!--<h3>Sprints</h3>-->
-        <!--<hr>-->
-
-        <!--<app-loadsprints></app-loadsprints>-->
-
-        <!--<button *ngIf="isMaster" class="btn-round" style="margin-bottom: 15px; margin-right: 3px; width: 200px; position: absolute; bottom: 0; right: 0" routerLink="/createSprint">-->
-          <!--<img src="http://localhost:3000/images/plus.png" width="37" height="37">-->
-          <!--New Sprint-->
-        <!--</button>-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <!--&lt;!&ndash;chat pane&ndash;&gt;-->
-    <!--<div class="col-sm-3" style="background-color: #d9edf7; height: 500px;">-->
-      <!--<h3 style="text-align: center">Chat</h3>-->
-      <!--<app-chat></app-chat>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-
-<div class="conatainer" style="width: 80%; margin: 0 auto;">
+<!--<div class="conatainer grey lighten-2" style="width: 80%; margin: 0 auto;">
   <h3>My Projects</h3>
   <hr>
 
@@ -62,7 +32,7 @@
         <div class="well text-{{ getRandomClasses() }}" (click)="projectClicked(item)" style=" background-color: #f2f2f2">
           <h4>{{ item.projectName }}</h4><hr style="border-color: black">
 
-          <span>{{ item.projectDesc }}</span>
+          <span>Nice projects mate</span>
 
         </div>
       </div>
@@ -72,15 +42,72 @@
   <div *ngIf="!isAvailable">
     <span style="font-size: x-large" class="watermark">Oops!! You dont have projects :P</span>
     <div class="bottom" style="float: right">
-      <img src="http://localhost:3000/images/cry.jpg" width="400" height="400">
+      <img src="../../../assets/images/cry.png" width="400" height="400">
     </div>
   </div>
+</div>-->
+
+<div class="fixed-action-btn" *ngIf="isMaster" style="margin-right: 160px">
+  <a class="btn-floating btn-large green" routerLink="/createProject">
+    <i class="large material-icons">add</i>
+  </a>
 </div>
 
-<div id="container-floating" *ngIf="isMaster">
-  <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" routerLink="/createProject">
-    <p class="plus">+</p>
-    <img class="edit" src="http://localhost:3000/images/create.png">
+<!--<div class="fixed-action-btn" *ngIf="isLogged" style="margin-right: 80px">
+  <a class="btn-floating btn-large blue btn tooltipped" data-position="top" data-delay="50" data-tooltip="Chat with your team" (click)="chatdiv(sidediv)">
+    <i class="large material-icons">chat</i>
+  </a>
+</div>-->
+
+<!--<div class="container" style="height: 80%;">
+  <div class="row container">
+
+    Projects pane
+    <div class="col-sm-3" style="height: 500px; position: relative;">
+
+      <div style="margin: 0 auto;">
+        <h3 style="text-align: center; color: black">My Projects</h3>
+        <hr style="color: black">
+        <ul style="list-style: none;">
+          <li *ngFor="let item of projects">
+            <a (click)="projectClicked(item)">
+              <div style="font-size: medium">
+                <img src="http://localhost:3000/images/doc.png" alt='missing' width="40" height="40"/>
+                {{ item.projectName }}
+              </div>
+            </a>
+            <hr>
+          </li>
+
+        </ul>
+
+        <div id="inner" style="margin: 0 auto;">
+          <button *ngIf="isMaster" class="btn-round" style="margin-bottom: 15px; margin-right: 2px; width: 200px; position: absolute; bottom: 0; right: 0" routerLink="/createProject">
+            <img src="http://localhost:3000/images/plus.png" width="37" height="37">
+            New Project
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    Main content pane
+    <div class="col-sm-6" style="height: 500px; position: relative; background-color: #5b9496;">
+      <h3>Sprints</h3>
+      <hr>
+
+      <app-loadsprints></app-loadsprints>
+
+      <button *ngIf="isMaster" class="btn-round" style="margin-bottom: 15px; margin-right: 3px; width: 200px; position: absolute; bottom: 0; right: 0" routerLink="/createSprint">
+        <img src="http://localhost:3000/images/plus.png" width="37" height="37">
+        New Sprint
+      </button>
+    </div>
+
+    chat pane
+    <div class="col-sm-3" style="background-color: #d9edf7; height: 500px;">
+      <h3 style="text-align: center">Chat</h3>
+      <app-chat></app-chat>
+    </div>
   </div>
-
-</div>
+</div>-->

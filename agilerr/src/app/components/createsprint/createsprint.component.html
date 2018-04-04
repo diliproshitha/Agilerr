@@ -1,23 +1,27 @@
+<div style=" margin-top: 0;padding-bottom: 100px" class="light-green lighten-4">
+<div style="max-width: 80%; margin-left: auto;margin-right: auto">
+  <h3 style="margin-top: 0;padding-top: 5px">Create a New Sprint for {{ projectName }}</h3>
+  <br>
+  <br>
+<div class="input-field col s4">
+  <input id="sn" name="name" [(ngModel)]="sprintName" type="text" class="form-control" style="">
+  <label for="sn">Enter a Title  for Your Sprint</label>
+</div>
 <div>
-  <h3>Create a New Sprint for {{ projectName }}</h3>
-  <hr>
+  <h5>Goes under: </h5>
 
-  <label>Sprint Name: </label>
-  <input name="name" [(ngModel)]="sprintName" type="text" class="form-control" style="width: 250px">
-  <label>Goes under: </label>
-  <div class="col-sm-3">
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ backlogItem }}
-        <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <li *ngFor="let description of backlogDesriptions"><a (click)="setBacklogItem(description)"> {{ description }}</a> </li>
-        <!--<li><a (click)="setPriority('high')">High</a></li>-->
-        <!--<li><a (click)="setPriority('medium')">Medium</a></li>-->
-        <!--<li><a (click)="setPriority('low')">Low</a></li>-->
-      </ul>
-    </div>
-  </div>
+  <select id="s" class="browser-default in transparent" name="type" [(ngModel)]="backlogItem">
+    <option style="background-color: rgb(31, 37, 35)" value="master" *ngFor="let description of backlogDesriptions" value="{{ description }}">{{ description }}</option>
+  </select>
 
+  <!-- Dropdown Trigger -->
+  <!--<a class='dropdown-button btn' data-activates='dropdown1'>{{ backlogItem }}</a>-->
+  <!-- Dropdown Structure -->
+  <!--<ul id='dropdown1' class='dropdown-content'>
+    <li *ngFor="let description of backlogDesriptions"><a (click)="setBacklogItem(description)">{{ description }}</a></li>
+  </ul>-->
+
+</div>
   <table class="table">
     <thead>
     <tr>
@@ -40,8 +44,11 @@
     <!--</tr>-->
     </tbody>
   </table>
-  <button (click)="addRows()" class="btn btn-primary" style="float: left">[+] Add Rows</button>
-  <button (click)="createSprint()" class="btn btn-info" style="float: right">Create Sprint</button>
-  <button routerLink="/sprints" class="btn btn-success" style="float: right">Cancel</button>
+  <button (click)="addRows()" class="btn blue lighten-1" style="float: left">[+] Add Rows</button>
+  <button (click)="createSprint()" class="btn light-green" style="float: right">Create Sprint</button>
+  <button routerLink="/sprints" class="btn red lighten-1" style="float: right; margin-right: 15px">Cancel</button>
 
+  <app-chatwrap></app-chatwrap>
+
+</div>
 </div>

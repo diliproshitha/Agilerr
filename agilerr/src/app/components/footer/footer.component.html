@@ -1,14 +1,38 @@
+<footer class="page-footer blue-grey darken-4" style="">
+    <div class="">
+      <div class="row">
+        <div class="col l6 s12">
+          <h3 class="white-text">AGILERR</h3>
+          <h4 class="grey-text text-lighten-4"><strong>Agile Project Management Platform.</strong></h4>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <ul>
+            <li *ngIf="authService.isLoggedIn()"><a class="grey-text text-lighten-3" [routerLink]="['/dashboard']">Dashboard</a></li>
+            <li *ngIf="authService.isLoggedIn()"><a class="grey-text text-lighten-3" [routerLink]="['/profile']">Profile</a></li>
+            <li><a class="grey-text text-lighten-3" href="/about">About Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container center">
+        Agilerr Inc<br>
+      © 2017 Copyright Text
+      </div>
+    </div>
+  </footer>
+
 <!--<footer class="footer">-->
   <!--<div class="container" style="width:800px; margin:0 auto; text-align: center;">-->
     <!--<span class="text-muted">&copy; Agilerr Inc. 2017</span>-->
   <!--</div>-->
 <!--</footer>-->
 
-<footer class="footer">
+<!--<footer class="footer">
   <div class="container">
     <p class="text-muted" style="text-align: center">&copy; Agilerr Inc. 2017</p>
   </div>
-</footer>
+</footer>-->
 
 
 <!--<div class="u-fixed u-bottom0 u-sizeFullWidth u-backgroundWhite u-boxShadowTop u-borderBox u-paddingTop10 u-paddingBottom10 u-zIndexMetabar u-xs-paddingLeft10 u-xs-paddingRight10 js-stickyFooter">-->

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {isNull} from "util";
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {isNull} from 'util';
 import { DashService } from '../../services/dash.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import Materialize from 'materialize-css';
 
 @Component({
   selector: 'app-create-project',
@@ -11,19 +12,25 @@ import { Router } from '@angular/router';
 })
 export class CreateProjectComponent implements OnInit {
 
+  @ViewChild('cs') cs: ElementRef;
+
   projectname: String;
-  //string in text field
+  // string in text field
   members: String;
-  //splitted members to send to the server
-  splittedMembers: any;
+  // splitted members to send to the server
+  splittedMembers = [];
   project = {};
   ids = new Array();
+  projectDescription: String = '';
   description = new Array();
   time = new Array();
-  //suggestions received from server
+  // suggestions received from server
   suggestions = new Array();
   isSuggestionsOn: boolean = false;
   splitted = new Array();
+
+  // flag to display autocomplete
+  flag: boolean = true;
 
   rows = [1, 2];
 
@@ -37,6 +44,14 @@ export class CreateProjectComponent implements OnInit {
   ngOnInit() {
   }
 
+  hide() {
+    this.cs.nativeElement.setAttribute('style', 'display: none');
+  }
+
+  show() {
+    this.cs.nativeElement.setAttribute('style', 'display: block');
+  }
+
   onCreateSubmit() {
 
     if (!isNull(this.projectname) || !isNull(this.members)) {
@@ -46,6 +61,7 @@ export class CreateProjectComponent implements OnInit {
       this.project['projectName'] = this.projectname;
       this.project['owner'] = localStorage.getItem('username');
       this.project['members'] = this.splittedMembers;
+      this.project['projectDesc'] = this.projectDescription;
       this.project['ids'] = this.ids;
       this.project['description'] = this.description;
       this.project['time'] = this.time;
@@ -53,18 +69,20 @@ export class CreateProjectComponent implements OnInit {
       console.log(JSON.stringify(this.project));
 
       this.dashService.createProject(this.project).subscribe(data => {
-        if (data.success){
-          this.flashMessage.show('Your project created successfully!', {cssClass: 'alert-success', timeout: 3000});
+        if (data.success) {
+          Materialize.toast('Your project created successfully!', 4000, 'light-green');
+          // this.flashMessage.show('Your project created successfully!', {cssClass: 'alert-success', timeout: 3000});
           this.router.navigate(['/dashboard']);
         } else {
-          this.flashMessage.show('Somethin went wrong!', {cssClass: 'alert-danger', timeout: 3000});
+          Materialize.toast('Somethin went wrong!', 4000, 'red darken-1');
+          // this.flashMessage.show('Somethin went wrong!', {cssClass: 'alert-danger', timeout: 3000});
           this.router.navigate(['/createProject']);
         }
       });
     }
   }
 
-  //Add Rows to table
+  // Add Rows to table
   addRows() {
 
     let index = this.rows[this.rows.length - 1];
@@ -72,23 +90,23 @@ export class CreateProjectComponent implements OnInit {
 
   }
 
-  // Seperates usernames from textarea
+  // Seperates usernames from textarea to send to server
   seperateMembers(memberString) {
     let re = /\s*,\s*/;
     this.splittedMembers = memberString.split(re);
   }
 
-  //Suggest Members from database
+  // Suggest Members from database
   suggestMembers() {
-
-
-
-    if (this.members == '') {
+    if (this.members === '') {
+      this.splitted = [];
       this.suggestions = [];
+      this.flag = false;
     }
 
     if (this.members !== '') {
-      this.splitted = this.members.split(',');
+      this.flag = true;
+      this.splitted = this.members.split(', ');
 
       console.log(this.splitted);
     }
@@ -97,11 +115,47 @@ export class CreateProjectComponent implements OnInit {
       if (data.success) {
         if (data.users) {
           this.isSuggestionsOn = true;
-          this.suggestions = data.users;
-          console.log(data);
+
+          this.suggestions = [];
+
+          for (let user of data.users) {
+            if (this.isMember(user.type)) {
+              this.suggestions.push(user);
+            }
+          }
+
+          console.log(data.users);
+          console.log(this.suggestions);
         }
       }
     });
+  }
+
+  // On select a autocomplete option
+  onAutoCompleteClick(username) {
+
+    let memberSplitted = this.members.split(', ');
+    let memberString = '';
+
+    memberSplitted[memberSplitted.length - 1] = username;
+
+    for (let i = 0; i < memberSplitted.length; i++) {
+      memberString += memberSplitted[i] + ', ';
+    }
+
+    this.members = memberString;
+
+    console.log(this.splitted);
+    console.log(this.members);
+  }
+
+  // test weather user is member
+  isMember(user) {
+    if (user === 'member') {
+      console.log('True');
+      return true;
+    }
+    return false;
   }
 
 }
