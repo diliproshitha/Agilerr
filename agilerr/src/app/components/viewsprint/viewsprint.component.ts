@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DashService } from '../../services/dash.service';
-import { AuthService } from "../../services/auth.service";
-import { FlashMessagesService } from "angular2-flash-messages";
+import { AuthService } from '../../services/auth.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import Materialize from 'materialize-css';
 
 @Component({
   selector: 'app-viewsprint',
@@ -19,7 +20,7 @@ export class ViewsprintComponent implements OnInit {
   finished: boolean = false;
   backlogItem: String;
 
-  //is member a master
+  // is member a master
   isMaster: boolean;
 
   constructor(
@@ -49,9 +50,11 @@ export class ViewsprintComponent implements OnInit {
     this.dashService.finishSprint(this.id).subscribe(data => {
       if (data.success) {
         this.finished = true;
-        this.flashMessages.show('Sprint Marked as Finished!', {cssClass: 'alert-success', timeout: 3000})
+        Materialize.toast('Sprint Marked as Finished!', 4000 , 'light-green');
+        // this.flashMessages.show('Sprint Marked as Finished!', {cssClass: 'alert-success', timeout: 3000})
       } else {
-        this.flashMessages.show('Something went wrong!', {cssClass: 'alert-success', timeout: 3000})
+        Materialize.toast('Something went wrong!', 4000 , 'red lighten-1');
+        // this.flashMessages.show('Something went wrong!', {cssClass: 'alert-success', timeout: 3000})
       }
     });
   }

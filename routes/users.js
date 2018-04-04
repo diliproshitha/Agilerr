@@ -145,5 +145,16 @@ router.get('/suggestions', passport.authenticate('jwt', {session: false}), funct
     }
 });
 
+// Get projectCount
+router.get('/getUsersCount', function (req, res) {
+
+    User.getUsersCount(function (err, count) {
+
+        if (err) throw err;
+
+        return res.json(count);
+    });
+});
+
 //export
 module.exports = router;

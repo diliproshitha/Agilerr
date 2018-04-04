@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DashService } from "../../services/dash.service";
-import { Router } from "@angular/router";
-import { FlashMessagesService } from "angular2-flash-messages";
-import {AuthService} from "../../services/auth.service";
+import { DashService } from '../../services/dash.service';
+import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import {AuthService} from '../../services/auth.service';
+import Materialize from 'materialize-css';
 
 @Component({
   selector: 'app-editsprint',
@@ -54,10 +55,12 @@ export class EditsprintComponent implements OnInit {
     this.sprint['name'] = this.name;
 
     this.dashService.updateSprint(this.sprint).subscribe(data => {
-      this.flashMessage.show('Your sprint created successfully!', {cssClass: 'alert-success', timeout: 3000});
+      Materialize.toast('Your sprint created successfully!', 4000, 'light-green');
+      // this.flashMessage.show('Your sprint created successfully!', {cssClass: 'alert-success', timeout: 3000});
       this.router.navigate(['/dashboard']);
     }, err => {
-      this.flashMessage.show('Somethin went wrong!', {cssClass: 'alert-danger', timeout: 3000});
+      Materialize.toast('Somethin went wrong!', 4000, 'light-green');
+      // this.flashMessage.show('Somethin went wrong!', {cssClass: 'alert-danger', timeout: 3000});
       this.router.navigate(['/updateSprint']);
     });
   }
@@ -66,9 +69,11 @@ export class EditsprintComponent implements OnInit {
     this.dashService.finishSprint(this.id).subscribe(data => {
       if (data.success) {
         this.finished = true;
-        this.flashMessage.show('Sprint Marked as Finished!', {cssClass: 'alert-success', timeout: 3000})
+        Materialize.toast('Sprint Marked as Finished!', 4000, 'light-green');
+        // this.flashMessage.show('Sprint Marked as Finished!', {cssClass: 'alert-success', timeout: 3000})
       } else {
-        this.flashMessage.show('Something went wrong!', {cssClass: 'alert-success', timeout: 3000})
+        Materialize.toast('Something went wrong!', 4000, 'light-green');
+        // this.flashMessage.show('Something went wrong!', {cssClass: 'alert-success', timeout: 3000})
       }
     });
   }

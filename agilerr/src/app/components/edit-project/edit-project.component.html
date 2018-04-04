@@ -1,0 +1,81 @@
+<div class="purple lighten-4" style="margin-top: 0; padding-bottom: 100px">
+  <div class="container">
+  
+    <h2 style="margin: 0; padding: 5px" class="page-header">Update Project {{ projectName }}</h2>
+  
+    <table class="table">
+      <thead>
+      <tr>
+        <th style="width: 25%">Project Name</th>
+        <th>Add Project Members</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th style="width: 25%" scope="row"><input required placeholder="Enter project name" name="id" ng [(ngModel)]="projectName" type="text" class="form-control" style="width: 200px"></th>
+        <td>
+          <div class="form-group">
+            <div class="input-group">
+              <input (click)="show(cs)" class="form-control" style="width: 600px;" type="text" [(ngModel)]="members" (keyup)="suggestMembers()" />
+  
+            </div>
+          </div>
+          <div class="search-result" *ngIf="flag" #cs>
+            <ul>
+              <li *ngFor="let user of suggestions" (click)="onAutoCompleteClick(user.username)">
+                <div>
+                  <img style="width: 30px; height: 30px; border-radius: 50%" class="user-photo" src="http://localhost:3000/images/profile/{{ user.username }}" onerror="this.src='http://localhost:3000/images/profile/default.gif';">
+                  {{ user.name }}
+                </div>
+              </li>
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div style="width: 300px; height: 200px; background-color: transparent;">
+            <div *ngFor="let member of membersArray; let i = index" >
+              <div *ngIf="member!=''" style="background-color: #73a9c4;height: 50px; padding: 5px;">
+                <img style="width: 30px; height: 30px; border-radius: 50%" class="user-photo" src="http://localhost:3000/images/profile/{{ member }}" onerror="this.src='http://localhost:3000/images/profile/default.gif';">
+                {{ member }}
+                <a (click)="removeMember(member, i)"><button class="btn" style="float: right;">remove</button></a>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <hr>
+  
+    <h4>Description: </h4>
+  
+    <input class="form-control" [(ngModel)]="desc" placeholder="Project Description" (click)="hide(cs)"/>
+  
+    <h4>Update Product Backlog</h4>
+  
+    <table class="table">
+      <thead>
+      <tr>
+        <th style="width: 25%">Backlog Id</th>
+        <th>Description</th>
+        <th>Est. Time (Weeks)</th>
+      </tr>
+      </thead>
+      <tbody id="tbody">
+      <tr *ngFor="let count of rows; let i = index">
+        <th style="width: 25%" scope="row"><input name="id" ng [(ngModel)]="ids[i]" type="text" class="form-control" style="width: 200px"></th>
+        <td><input name="userstories" [(ngModel)]="description[i]" type="text" class="form-control"></td>
+        <td style="width: 20%"><input name="userstories" [(ngModel)]="time[i]" type="text" class="form-control"></td>
+      </tr>
+      </tbody>
+    </table>
+  
+    <button (click)="addRows()" class="btn btn-primary" style="float: left">Add Rows</button>
+  
+  
+    <button (click)="onUpdateSubmit()" class="btn btn-success" style="float: right">Update Project</button>
+    <button routerLink="/dashboard" class="btn btn-info" style="float: right; margin-right: 10px;">Cancel</button>
+  </div>
+</div>
+
+<app-chatwrap></app-chatwrap>

@@ -20,7 +20,7 @@ export class CreatesprintComponent implements OnInit {
   storyCount = 0;
   formattedDate: String;
   projectName: String;
-  backlogItem: String = "Select Backlog Item";
+  backlogItem: String = 'Select Backlog Item';
   backlogDesriptions = new Array();
 
   sprint = {};
@@ -67,7 +67,7 @@ export class CreatesprintComponent implements OnInit {
     this.formattedDate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
   }
 
-  //Add Rows to table
+  // Add Rows to table
   addRows() {
 
     let index = this.rows[this.rows.length - 1];
@@ -77,6 +77,7 @@ export class CreatesprintComponent implements OnInit {
 
   setBacklogItem(item) {
     this.backlogItem = item;
+    console.log(this.backlogItem);
   }
 
 }

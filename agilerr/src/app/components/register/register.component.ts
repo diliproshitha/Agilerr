@@ -4,6 +4,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
+import Materialize from 'materialize-css';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,8 +18,9 @@ export class RegisterComponent implements OnInit {
   email: String;
   password: String;
   type: String;
+
   isUsernameAvailable: boolean = null;
-  //shows the availability span in username
+  // shows the availability span in username
   showUsernameSpan: boolean = false;
   showEmailSpan: boolean = false;
   showEmailNotValidSpan: boolean = false;
@@ -36,7 +39,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  onRegisterSubmit(){
+  onRegisterSubmit() {
     const user = {
       name: this.name,
       email: this.email,
@@ -45,45 +48,42 @@ export class RegisterComponent implements OnInit {
       type: this.type
     };
 
-    //required fields
-    if (!this.validateService.validateRegister(user)){
-      this.flashMessage.show('Please fill in all the fields!', {cssClass: 'alert-danger', timeout: 3000});
+    // required fields
+    if (!this.validateService.validateRegister(user)) {
+      Materialize.toast('Please fill in all the fields!', 4000);
+      // this.flashMessage.show('Please fill in all the fields!', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
 
-    //validate email
-    if (!this.validateService.validateEmail(user.email)){
-      this.flashMessage.show('Please insert a valid email!', {cssClass: 'alert-danger', timeout: 3000});
+    // validate email
+    if (!this.validateService.validateEmail(user.email)) {
+      Materialize.toast('Please insert a valid email!', 4000);
+      // this.flashMessage.show('Please insert a valid email!', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
 
     // Register user
     this.authService.registerUser(user).subscribe(data => {
-      if (data.success){
-        this.flashMessage.show('You are now registered. You can Log In now!', {cssClass: 'alert-success', timeout: 3000});
+      if (data.success) {
+        Materialize.toast('You are now registered. You can Log In now!', 4000);
+        // this.flashMessage.show('You are now registered. You can Log In now!', {cssClass: 'alert-success', timeout: 3000});
         this.router.navigate(['/login']);
       } else {
-        this.flashMessage.show('Somethin went wrong!', {cssClass: 'alert-danger', timeout: 3000});
+        Materialize.toast('Somethin went wrong!', 4000);
+        // this.flashMessage.show('Somethin went wrong!', {cssClass: 'alert-danger', timeout: 3000});
         this.router.navigate(['/register']);
       }
     });
   }
 
   checkUsername() {
-
     this.showUsernameSpan = true;
-
     this.authService.checkUser(this.username).subscribe(data => {
       this.isUsernameAvailable = !data.success;
-
     });
-
   }
 
   checkEmail() {
-
-
-
     if (this.validateService.validateEmail(this.email)) {
       this.isEmailValid = true;
       // console.log('EmailValid: ' + this.isEmailValid);
@@ -99,7 +99,5 @@ export class RegisterComponent implements OnInit {
       this.isEmailValid = false;
       // console.log('EmailValid: ' + this.isEmailValid);
     }
-
   }
-
 }

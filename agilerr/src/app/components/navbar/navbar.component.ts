@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import Materialize from 'materialize-css';
 
 @Component({
   selector: 'app-navbar',
@@ -19,9 +20,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLogOut(){
+  onLogOut() {
     this.authService.onLogOut();
-    this.flashMessages.show('You are Logged out!', {cssClass: 'alert-success', timeout: 3000});
+    Materialize.toast('You are Logged out!', 4000);
+    // this.flashMessages.show('You are Logged out!', {cssClass: 'alert-success', timeout: 3000});
     this.router.navigate(['']);
   }
 

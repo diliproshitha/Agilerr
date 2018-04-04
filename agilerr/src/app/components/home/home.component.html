@@ -1,17 +1,80 @@
-<div class="container">
-
-  <h1>Plan Your Sprints here..</h1><br>
-  <h2>With us..</h2><br><br>
-
-  <div *ngIf="!authService.isLoggedIn()">
-  <button class="btn-success" style="width: 150px; height: 60px; font-size: medium" routerLink="login">Log In Now</button>
-  Or
-  <button class="btn-success" style="width: 150px; height: 60px; font-size: medium" *ngIf="!authService.isLoggedIn()" routerLink="register">Register Now</button>
+<div class="home-div row" style="background-image: url('../../../assets/images/banner.jpg')">
+  <!--<img class="banner" src="../../../assets/images/banner.jpg">-->
+  <!--<img class="med" src="../../../assets/images/home-img.gif">-->
+  <div class="front-text col s9">
+      <h1 class=""><strong>AGILERR</strong></h1>
+      <h3>Agile Project Managenet Platform</h3>
+      <h5>Bring Your valueble ideas for us. We make them sucess through
+        <br>
+        the well manage and user friendly system!</h5>
   </div>
-
-  <div *ngIf="authService.isLoggedIn()">
-    <button class="btn-success" style="width: 150px; height: 60px; font-size: medium" routerLink="dashboard">Go to Dashboard</button>
+  <div class="col s3">
+      <img class="med" src="../../../assets/images/home-img.gif">
   </div>
+</div>
 
-  <img src="http://localhost:3000/images/developer.png" class="fix"/>
+<div class="cyan darken-3 details row">
+  <div class="col s6 center" *ngIf="!authService.isLoggedIn()">
+      <h5>If you still did not join with us!</h5>
+      <button class="btn waves-effect waves-light green accent-4 btn-large cyan pulse" *ngIf="!authService.isLoggedIn()" routerLink="register">Sign Up
+        <i class="material-icons right">send</i>
+      </button>
+      <h6>It's Free!</h6>
+  </div>
+  <div class="col s6 center" *ngIf="!authService.isLoggedIn()">
+      <h5>Your Projects are waiting!</h5>
+      <button class="btn waves-effect waves-light green accent-4 btn-large cyan pulse" routerLink="login">Sign In
+        <i class="material-icons right">send</i>
+      </button>
+      <h6>Manage them.</h6>
+  </div>
+  <div class="col s12 center" *ngIf="authService.isLoggedIn()">
+    <h5>Visit Your Projects.</h5>
+    <button class="btn waves-effect waves-light green accent-4 btn-large cyan pulse" routerLink="dashboard">Go to Dashboard
+        <i class="material-icons right">send</i>
+    </button>
+    <h6>Manage Them.</h6>
+  </div>
+  <div style="max-width: 80%; margin-left: auto; margin-right: auto">
+  <div class="col s6 center card-panel teal lighten-2">
+    <h3>Total Projects Hosted</h3>
+    <h4 style="text-align: center">{{projectsCount}}</h4>
+  </div>
+  <div class="col s6 center card-panel teal lighten-2">
+    <h3>Total Registered Users</h3>
+    <h4 style="text-align: center">{{usersCount}}</h4>
+  </div>
+</div>
+</div>
+
+<app-chatwrap></app-chatwrap>
+
+<div class="">
+  <div class="row teal lighten-2" style="margin-bottom: 0;">
+    <div class="col s6 center">
+      <img class="home-des" src="../../../assets/images/home-des.gif">
+    </div>
+    <div class="col s6 center">
+      <h3 style="color:rgb(130, 50, 204);" class="description">We Know Your Struggle!</h3>
+      <h5 class="descr">Project management is not easy in day to day life. We know that.<br><strong>Try with AGILERR.</strong><br> We bring your life easier through the well managing your projects.!</h5>
+    </div>
+  </div>
+  <div class="row teal lighten-1" style="margin-bottom: 0;">
+    <div class="col s6 center">
+        <h3 style="color:rgb(130, 50, 204);" class="description">Meetings are boring!</h3>
+        <h5 class="descr"><strong>AGILLER</strong> provide to you very easy chat system. You can bring your all communications through it.</h5>
+    </div>
+    <div class="col s6 center">
+        <img class="home-dis" src="../../../assets/images/home-dis.gif">
+    </div>
+  </div>
+  <div class="row teal" style="margin-bottom: 0;">
+    <div class="col s6">
+        <img class="home-sea" src="../../../assets/images/home-sea.gif">
+    </div>
+    <div class="col s6">
+        <h3 style="color:rgb(130, 50, 204);" class="description">Handling Printed Documents is very hard.</h3>
+        <h5 class="descr">Use <strong>AGILERR.</strong><br>We bring you to easy & intractive document manage system.</h5>
+    </div>
+  </div>
 </div>

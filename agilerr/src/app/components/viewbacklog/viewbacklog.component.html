@@ -1,0 +1,36 @@
+<div class="blue-grey lighten-3" style="padding-bottom: 200px">
+  <div class="" style="max-width: 80%; margin-left: auto;margin-right: auto">
+    
+      <h2 style="margin-top: 0; padding: 5px">Product Backlog for {{ projectName }}</h2>
+      <a style="float: right;" class="btn waves-effect" routerLink="/issues">Issues>></a>
+      <button style="float: right;margin-right: 20px" class="btn " routerLink="/sprints"><< Sprints</button>
+      <br>
+      <br>
+    
+      <table style="width: 80%; margin: 0 auto;">
+        <thead>
+          <th style="width: 20%">
+            ID
+          </th>
+          <th style="width: 50%">
+            Description
+          </th>
+          <th style="width: 30%">
+            Allocated Weeks
+          </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let id of ids; let i = index">
+            <td>{{ ids[i] }}</td>
+            <td>{{ desc[i] }}</td>
+            <td>{{ time[i] }}</td>
+          </tr>
+
+          <!-- <div *ngFor="let row of project; let i = index">
+            {{ row.ids[i] }} {{ row.description[i] }} {{ row.time[i] }}
+          </div> -->
+        </tbody>
+      </table>
+    
+    </div>
+</div>

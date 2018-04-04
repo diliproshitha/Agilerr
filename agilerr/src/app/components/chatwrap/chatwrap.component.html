@@ -1,0 +1,9 @@
+<div id="slider" class="slide-out transparent" #sidediv>
+  <app-chat></app-chat>
+</div>
+
+<div class="fixed-action-btn" *ngIf="isLogged" style="margin-right: 80px">
+  <a class="btn-floating btn-large blue btn tooltipped" data-position="top" data-delay="50" data-tooltip="Chat with your team" (click)="chatdiv(sidediv)">
+    <i class="large material-icons">chat</i>
+  </a>
+</div>

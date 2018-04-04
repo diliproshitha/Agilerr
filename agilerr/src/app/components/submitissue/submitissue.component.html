@@ -1,51 +1,39 @@
+<div class="deep-orange lighten-3" style="padding-bottom: 100px">
 <div class="container" style="width: 60%; margin: 0 auto;">
-  <span style="font-size: x-large;"><b>Submit a Issue</b></span>
+  <h2 style="margin-top: 0; padding: 10px">Submit a Issue</h2>
   <div style="float: right;">
-    <button class="btn btn-default" routerLink="/issues"><< Issues</button>
+    <button class="btn " routerLink="/issues"><< Issues</button>
+    <button class="btn " routerLink="/issues">BackLog >> </button>
   </div>
-  <hr>
+  <br>
+  <br>
 
   <div class="row">
-    <div class="col-sm-3">
-      <span style="font-size: medium">Issue Type: </span>
-    </div>
+   
+    <div class="col s3">
+      <h5>Issue Type</h5>
 
-    <div class="col-sm-3">
-      <div class="dropdown">
-        <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">{{ issueType }}
-          <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a (click)="setIssueType('error')">Error</a></li>
-          <li><a (click)="setIssueType('improvement')">Improvement</a></li>
-          <!--<li><a (click)="setIssueType('error')">JavaScript</a></li>-->
-        </ul>
+      <select class="browser-default in teal lighten-2" name="type" style="color: white" [(ngModel)]="issueType">
+          <option style="background-color: rgb(31, 37, 35)" (click)="setIssueType('error')">Error</option>
+          <option style="background-color: rgb(31, 37, 35)" (click)="setIssueType('improvement')">Improvement</option>
+        </select>
       </div>
-    </div>
-
-
-    <div class="col-sm-3">
-      <span style="font-size: medium">Priority: </span>
-    </div>
-
-  <div class="col-sm-3">
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ priority }}
-        <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <li><a (click)="setPriority('high')">High</a></li>
-        <li><a (click)="setPriority('medium')">Medium</a></li>
-        <li><a (click)="setPriority('low')">Low</a></li>
-      </ul>
-    </div>
+  <div class=" col s3">
+      <h5>Priority</h5>
+      <select class="browser-default in teal lighten-2" name="type" style="color: white" [(ngModel)]="priority">
+          <option style="background-color: rgb(31, 37, 35)" (click)="setPriority('high')">High</option>
+          <option style="background-color: rgb(31, 37, 35)" (click)="setPriority('medium')">Medium</option>
+          <option style="background-color: rgb(31, 37, 35)" (click)="setPriority('low')">Low</option>
+        </select>
   </div>
   </div>
   <br>
-
-
-  <div class="form-group">
-    <span style="font-size: medium">Description: </span>
-    <textarea class="form-control" rows="5" [(ngModel)]="description" placeholder="Description"></textarea>
-  </div>
+  <div class="input-field col s8">
+      <i class="material-icons prefix">mode_edit</i>
+      <textarea id="txt" class="materialize-textarea" [(ngModel)]="description" ></textarea>
+      <label style="color:black" for="txt">Enter Discription about Your Issue</label>
+    </div>
 
   <button (click)="submitIssue()" class="btn btn-info" style="float: right;">Submit Issue</button>
+</div>
 </div>

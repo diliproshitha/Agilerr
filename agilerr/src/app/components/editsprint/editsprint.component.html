@@ -1,4 +1,4 @@
-<div>
+<div style="height: 600px; padding-bottom: 100px ;max-width: 80%; margin-left: auto; margin-right: auto; padding-top: 50px">
   <span style="font-size: xx-large">Edit Sprint : </span><input name="name" [(ngModel)]="name" type="text" class="form-control" style="width: 250px">
   <button *ngIf="isMaster && !finished" class="btn btn-warning" (click)="finishSprint()" style="float: right">Mark as Finished</button>
   <button *ngIf="finished" class="btn btn-danger" style="float: right">This is a Finished Sprint</button>
@@ -23,3 +23,5 @@
   <button routerLink="/sprints" class="btn btn-info" style="float: right">Go Back</button>
 
 </div>
+
+<app-chatwrap></app-chatwrap>

@@ -24,10 +24,21 @@ import { CreatesprintComponent } from './components/createsprint/createsprint.co
 import { LoadsprintsComponent } from './components/loadsprints/loadsprints.component';
 import { ViewsprintComponent } from './components/viewsprint/viewsprint.component';
 import { ChatComponent } from './components/chat/chat.component';
-import { EditsprintComponent } from './components/editsprint/editsprint.component';
+
+import { MaterializeModule } from 'angular2-materialize';
+import { StickyNavModule } from 'ng2-sticky-nav';
+import { ToTopComponent } from './components/to-top/to-top.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
+import { ChatwrapComponent } from './components/chatwrap/chatwrap.component';
 import { IssuesComponent } from './components/issues/issues.component';
 import { SubmitissueComponent } from './components/submitissue/submitissue.component';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { EditsprintComponent } from './components/editsprint/editsprint.component';
+import { from } from 'rxjs/observable/from';
+import { ContactComponent } from './components/contact/contact.component';
+import { ViewbacklogComponent } from './components/viewbacklog/viewbacklog.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
+import { AboutComponent } from './components/about/about.component';
+import { EditProjectComponent } from './components/edit-project/edit-project.component';
 
 const appRoutes: Routes = [
   {
@@ -54,7 +65,8 @@ const appRoutes: Routes = [
     children: [
       {
         path: 'createProject',
-        component: CreateProjectComponent
+        component: CreateProjectComponent,
+        outlet: 'sub'
       },
       {
         path: 'viewSprint',
@@ -65,11 +77,10 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard],
         component: IssuesComponent,
         children: [
-          {
-            path: 'submitIssue',
-            canActivate: [AuthGuard],
-            component: SubmitissueComponent
-          }
+        {
+          path: 'submitIssue',
+          canActivate: [AuthGuard],
+          component: SubmitissueComponent }
         ]
       }
     ]
@@ -115,11 +126,33 @@ const appRoutes: Routes = [
     component: ChatComponent
   },
   {
-    path: 'progress',
+    path: 'privacy',
+    component: PrivacyComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
+  },
+  {
+    path: 'viewBacklog',
     canActivate: [AuthGuard],
-    component: CreatescrumComponent
+    component: ViewbacklogComponent
+  },
+  {
+    path: 'timeline',
+    canActivate: [AuthGuard],
+    component: TimelineComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
+  },
+  {
+    path: 'editProject',
+    canActivate: [AuthGuard],
+    component: EditProjectComponent
   }
-]
+];
 
 @NgModule({
   declarations: [
@@ -137,9 +170,17 @@ const appRoutes: Routes = [
     LoadsprintsComponent,
     ViewsprintComponent,
     ChatComponent,
-    EditsprintComponent,
+    ToTopComponent,
+    PrivacyComponent,
+    ChatwrapComponent,
     IssuesComponent,
-    SubmitissueComponent
+    SubmitissueComponent,
+    EditsprintComponent,
+    ContactComponent,
+    ViewbacklogComponent,
+    TimelineComponent,
+    AboutComponent,
+    EditProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -147,7 +188,8 @@ const appRoutes: Routes = [
     FormsModule,
     FlashMessagesModule,
     HttpModule,
-    ChartsModule
+    MaterializeModule,
+    StickyNavModule
   ],
   providers: [ValidateService, AuthService, AuthGuard, DashService],
   bootstrap: [AppComponent]

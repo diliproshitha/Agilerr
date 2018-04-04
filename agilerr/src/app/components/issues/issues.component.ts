@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DashService} from "../../services/dash.service";
+import {DashService} from '../../services/dash.service';
 
 @Component({
   selector: 'app-issues',
@@ -8,11 +8,13 @@ import {DashService} from "../../services/dash.service";
 })
 export class IssuesComponent implements OnInit {
 
-  issues = Array;
+  issues = new Array();
   error = 'error';
   projectName: String = localStorage.getItem('projectName');
+  isIssueZero: boolean = false;
 
-  constructor(private dashService: DashService) { }
+  constructor(private dashService: DashService) {
+  }
 
   ngOnInit() {
     this.dashService.getIssues().subscribe(issues => {
@@ -21,15 +23,19 @@ export class IssuesComponent implements OnInit {
       } else {
         this.issues = issues.issues;
         console.log(this.issues);
+        if (this.issues.length > 0) {
+          console.log(this.issues);
+          this.isIssueZero = true;
+          console.log('Issues are zero!');
+        }
       }
     });
-
-
   }
 
   isError(type) {
-    if (type === 'error')
+    if (type === 'error') {
       return true;
+    }
     return false;
   }
 
@@ -39,7 +45,7 @@ export class IssuesComponent implements OnInit {
       console.log(data);
       if (data.success) {
         for (let i = 0; i < this.issues.length; i++) {
-          if (this.issues[i]._id == issueId) {
+          if (this.issues[i]._id === issueId) {
             this.issues[i].fixed = true;
           }
         }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as socketIo from 'socket.io-client';
 import { DashService } from '../../services/dash.service';
-import {isNull} from "util";
+import {isNull} from 'util';
 
 @Component({
   selector: 'app-chat',
@@ -12,19 +12,23 @@ import {isNull} from "util";
 export class ChatComponent implements OnInit {
 
   socket: any;
-  text = ''; //get chat box text
+  text = ''; // get chat box text
   msgs = new Array();
   projectId: String;
+  projectName: String;
+  username: String;
 
   constructor(private dashService: DashService) {
 
     this.projectId = localStorage.getItem('currentProject');
+    this.projectName = localStorage.getItem('projectName');
+    this.username = localStorage.getItem('username');
 
-    //Event emitter
+    // Event emitter
     this.dashService.projectChanged.subscribe(
       (projectId: String) => this.onProjectChange(projectId));
 
-    //init socketio
+    // init socketio
     this.loadSocket();
 
     // Load previous chat msgs
@@ -41,30 +45,33 @@ export class ChatComponent implements OnInit {
 
     // receive msg under project Id
     this.socket.on(this.projectId, (data) => {
-      if (data.substring(0, data.indexOf(':')) == localStorage.getItem('currentProject')) {
-        console.log(data.substring(data.indexOf(';') + 1));
-        console.log(data.substring(0, data.indexOf(':')));
-        console.log(data.substring(data.indexOf(':') + 1, data.indexOf(';')));
+      if (data.substring(0, data.indexOf(':')) === localStorage.getItem('currentProject')) {
 
         let msg = {msg: data.substring(data.indexOf(';') + 1),
           username: data.substring(data.indexOf(':') + 1, data.indexOf(';'))};
-        console.log(JSON.stringify(msg));
 
         if (msg.msg !== '') {
           this.msgs.push(msg);
         }
-        var chatter = document.getElementById('chatter');
-        chatter.scrollTop = chatter.scrollHeight;
+
+
+        setTimeout(this.scrollBottom(), 2000);
+
       }
     });
   }
 
-  //Load msgs from Database
+  // scolls bottom after msg receive
+  scrollBottom() {
+    let chatter = document.getElementById('chatter');
+    chatter.scrollTop = chatter.scrollHeight;
+  }
+
+  // Load msgs from Database
   loadChat() {
     this.dashService.loadChat(localStorage.getItem('currentProject')).subscribe(msgs => {
-      console.log(JSON.stringify(msgs));
       this.msgs = msgs;
-      var chatter = document.getElementById('chatter');
+      let chatter = document.getElementById('chatter');
       chatter.scrollTop = chatter.scrollHeight;
     });
   }
@@ -76,23 +83,22 @@ export class ChatComponent implements OnInit {
         localStorage.getItem('username') + ';' + this.text;
       this.socket.emit('sendmsg', msg);
       this.text = '';
-      var chatter = document.getElementById('chatter');
+      let chatter = document.getElementById('chatter');
       chatter.scrollTop = chatter.scrollHeight;
     }
   }
 
-  //Loads chat when project changed
+  // Loads chat when project changed
   onProjectChange(id) {
 
     // In each time project changed, socket disconnects and initializes a new one
-
     this.dashService.loadChat(id).subscribe(msgs => {
 
       // Disconnect current socket
       this.socket.disconnect();
       this.projectId = id;
 
-      //Create a new socket with new projectId
+      // Create a new socket with new projectId
       this.loadSocket();
 
       this.msgs = msgs;
