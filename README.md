@@ -2,7 +2,7 @@
 MEAN Stack based Agile project management platform
 
 ## Introduction
-Agilerr is a [MEAN Stack] (http://mean.io/) based Agile project management platform which can use to manage projects and sprints.
+Agilerr is a [MEAN Stack](http://mean.io/) based Agile project management platform which can use to manage projects and sprints.
 
 ### Features
 * User levels (Scrum masters and members)
