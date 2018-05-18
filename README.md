@@ -13,3 +13,13 @@ Agilerr is a [MEAN Stack](http://mean.io/) based Agile project management platfo
 
 ## Getting started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Requirements
+You need to install latest Node and MongoDB.
+
+### Installation
+Visit to root folder and use command :
+'''
+npm install
+'''
+Then go to /Agilerr folder and again use npm install.
