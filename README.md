@@ -18,8 +18,10 @@ These instructions will get you a copy of the project up and running on your loc
 You need to install latest Node and MongoDB.
 
 ### Installation
-Visit to root folder and use command :
-'''
+Visit to root (Node backend) folder and use command :
+```
 npm install
-'''
-Then go to /Agilerr folder and again use npm install.
+```
+Then go to /Agilerr (Angular files) folder and again use npm install.
+
+Now navigate to config/database.js and place database and secret strings as you need.
